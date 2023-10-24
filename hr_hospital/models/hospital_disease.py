@@ -2,8 +2,11 @@ from odoo import models, fields
 
 
 class HospitalDisease(models.Model):
-    _name = 'hospital.disease'
-    _description = 'Disease Types'
+    _name = "hospital.disease"
+    _description = "Disease general information"
 
-    name = fields.Char(string='Name', required=True)
-    # Add other fields as needed
+    title = fields.Char(required=True)
+    description = fields.Char(required=True)
+    symptoms = fields.Char(required=True)
+    treatment = fields.Char(required=True)
+    mortality = fields.Float(required=False)
