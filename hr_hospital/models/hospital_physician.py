@@ -12,6 +12,7 @@ class HospitalPhysician(models.Model):
     experience = fields.Integer(required=True)
     address = fields.Char(required=True)
     patient_ids = fields.One2many(
-        comodel_name="patient",
+        comodel_name="hospital.patient",
+        inverse_name="physician_id",
         string="Assigned patients",
     )
