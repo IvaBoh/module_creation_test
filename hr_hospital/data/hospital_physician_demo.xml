@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="physician_1" model="hospital.physician">
+        <field name="first_name">John</field>
+        <field name="last_name">Doe</field>
+        <field name="address">USA</field>
+    </record>
+
+    <record id="physician_2" model="hospital.physician">
+        <field name="first_name">Kell</field>
+        <field name="last_name">Doe</field>
+        <field name="address">South Africa</field>
+    </record>
+
+    <record id="physician_3" model="hospital.physician">
+        <field name="first_name">Bill</field>
+        <field name="last_name">Doe</field>
+        <field name="address">USA</field>
+    </record>
+
+</odoo>
