@@ -5,7 +5,9 @@ class HospitalVisit(models.Model):
     _name = "hospital.visit"
     _description = "Patient visits to assigned physician"
 
-    patient_id = fields.Many2one(comodel_name="hospital.patient", required=True)
+    patient_id = fields.Many2one(
+        comodel_name="hospital.patient", required=True
+    )
     physician_id = fields.Many2one(
         comodel_name="hospital.physician", required=True
     )
