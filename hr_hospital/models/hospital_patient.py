@@ -24,5 +24,4 @@ class HospitalPatient(models.Model):
             ("golden", "Golden package"),
             ("platinum", "Platinum package"),
         ],
-        default="Standard",
     )
