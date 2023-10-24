@@ -20,7 +20,7 @@
         <field name="model">hospital.disease</field>
         <field name="arch" type="xml">
             <tree>
-               <field name="title"/>
+                <field name="title"/>
                 <field name="description"/>
                 <field name="symptoms"/>
                 <field name="treatment"/>

@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <form>
                 <field name="patient_id"/>
-                <field name="doctor_id"/>
+                <field name="physician_id"/>
                 <field name="diagnosis_id"/>
                 <field name="visit_date"/>
                 <field name="case"/>
@@ -21,7 +21,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="patient_id"/>
-                <field name="doctor_id"/>
+                <field name="physician_id"/>
                 <field name="diagnosis_id"/>
                 <field name="visit_date"/>
                 <field name="case"/>

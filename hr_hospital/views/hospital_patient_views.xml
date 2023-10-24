@@ -9,6 +9,7 @@
                 <field name="first_name"/>
                 <field name="last_name"/>
                 <field name="address"/>
+                <field name="physician_id"/>
                 <field name="visit_ids"/>
                 <field name="assurance"/>
             </form>
@@ -23,6 +24,7 @@
                 <field name="first_name"/>
                 <field name="last_name"/>
                 <field name="address"/>
+                <field name="physician_id"/>
                 <field name="visit_ids"/>
                 <field name="assurance"/>
             </tree>
@@ -37,7 +39,7 @@
     </record>
 
     <menuitem id="patient_menu"
-              parent="hr_hospital_menu_root"
+              parent="hospital_main_menu"
               action="hospital_patient_action"
               sequence="20"/>
 

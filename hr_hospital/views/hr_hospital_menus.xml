@@ -3,14 +3,12 @@
 
     <menuitem id="hr_hospital_menu_root"
               web_icon="hr_hospital,static/description/icon.png"
-              name="Hospital"/>
-
-    <menuitem id="physician_menu"
-              parent="hr_hospital_menu_root"
+              name="Hospital"
               sequence="10"/>
 
-    <menuitem id="patient_menu"
+    <menuitem id="hospital_main_menu"
               parent="hr_hospital_menu_root"
-              sequence="20"/>
+              name="Hospital menu"
+              sequence="10"/>
 
 </odoo>

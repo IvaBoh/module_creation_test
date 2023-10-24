@@ -26,15 +26,15 @@
     </record>
 
     <record id="hospital_physician_action" model="ir.actions.act_window">
-        <field name="name">Patients</field>
+        <field name="name">Physicians</field>
         <field name="res_model">hospital.physician</field>
         <field name="type">ir.actions.act_window</field>
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem id="patient_menu"
-              parent="hr_hospital_menu_root"
+    <menuitem id="physician_menu"
+              parent="hospital_main_menu"
               action="hospital_physician_action"
-              sequence="10"/>
+              sequence="20"/>
 
 </odoo>
