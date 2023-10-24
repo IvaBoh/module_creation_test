@@ -9,9 +9,13 @@ class HospitalPatient(models.Model):
     last_name = fields.Char(required=True)
     address = fields.Char(required=True)
     physician_id = fields.Many2one(
-        comodel_name="physician", string="Attending physician"
+        comodel_name="hospital.physician", string="Attending physician"
     )
-    visit_ids = fields.One2many(comodel_name="visit", string="Visits")
+    visit_ids = fields.One2many(
+        comodel_name="hospital.visit",
+        inverse_name="patient_id",
+        string="Visits",
+    )
     assurance = fields.Selection(
         selection=[
             ("basic", "Basic package"),
