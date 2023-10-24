@@ -13,7 +13,7 @@
         <field name="treatment">Some medicine</field>
     </record>
 
-    <record id="disease_2" model="hospital.disease">
+    <record id="disease_3" model="hospital.disease">
         <field name="title">Alzheimer's Disease</field>
         <field name="description">Alzheimer's is a specific disease ...</field>
         <field name="treatment">Some medicine</field>
