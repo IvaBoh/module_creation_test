@@ -1,35 +1,30 @@
-# -*- coding: utf-8 -*-
 {
-    'name': "hr_hospital",
-
-    'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
-
-    'description': """
-        Long description of module's purpose
-    """,
-
-    'author': "My Company",
-    'website': "http://www.yourcompany.com",
-
-    # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml
-    # for the full list
-    'category': 'Uncategorized',
-    'version': '0.1',
-
-    # any module necessary for this one to work correctly
-    'depends': ['base'],
-
-    # always loaded
-    'data': [
-        # 'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/templates.xml',
+    "name": "Hospital Management",
+    "version": "15.0.0.0.0",
+    "category": "Services",
+    "summary": """Odoo module to manage the basic processes of clinic""",
+    "license": "LGPL-3",
+    "author": "Iva Boh",
+    "maintainer": "https://github.com/IvaBoh",
+    "website": "https://github.com/IvaBoh",
+    "depends": [
+        "base",
     ],
-    # only loaded in demonstration mode
-    'demo': [
-        'demo/demo.xml',
+    "data": [
+        "security/ir.model.access.csv",
+        "data/hospital_disease_data.xml",
+        "views/hospital_disease_views.xml",
+        "views/hospital_patient_views.xml",
+        "views/hospital_physician_views.xml",
+        "views/hospital_visit_views.xml",
     ],
+    "demo": [
+        "data/hospital_patient_demo.xml",
+        "data/hospital_physician_demo.xml",
+    ],
+    "images": ["static/description/icon.png"],
+    "support": "antutilo@gmail.com",
+    "application": False,
+    "installable": True,
+    "auto_install": False,
 }
