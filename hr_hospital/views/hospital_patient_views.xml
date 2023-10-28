@@ -6,12 +6,10 @@
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <form>
-                <field name="first_name"/>
-                <field name="last_name"/>
-                <field name="address"/>
-                <field name="physician_id"/>
-                <field name="visit_ids"/>
-                <field name="assurance"/>
+                <field name="name"/>
+                <field name="phone"/>
+                <field name="age"/>
+                <field name="birthday_date"/>
             </form>
         </field>
     </record>
@@ -21,12 +19,10 @@
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="first_name"/>
-                <field name="last_name"/>
-                <field name="address"/>
-                <field name="physician_id"/>
-                <field name="visit_ids"/>
-                <field name="assurance"/>
+                <field name="name"/>
+                <field name="phone"/>
+                <field name="age"/>
+                <field name="birthday_date"/>
             </tree>
         </field>
     </record>
@@ -34,7 +30,6 @@
     <record id="hospital_patient_action" model="ir.actions.act_window">
         <field name="name">Patients</field>
         <field name="res_model">hospital.patient</field>
-        <field name="type">ir.actions.act_window</field>
         <field name="view_mode">tree,form</field>
     </record>
 

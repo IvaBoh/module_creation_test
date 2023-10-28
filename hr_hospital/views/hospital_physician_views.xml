@@ -6,9 +6,7 @@
         <field name="model">hospital.physician</field>
         <field name="arch" type="xml">
             <form>
-                <field name="first_name"/>
-                <field name="last_name"/>
-                <field name="patient_ids"/>
+                <field name="name"/>
             </form>
         </field>
     </record>
@@ -18,9 +16,7 @@
         <field name="model">hospital.physician</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="first_name"/>
-                <field name="last_name"/>
-                <field name="patient_ids"/>
+                <field name="name"/>
             </tree>
         </field>
     </record>
@@ -28,7 +24,6 @@
     <record id="hospital_physician_action" model="ir.actions.act_window">
         <field name="name">Physicians</field>
         <field name="res_model">hospital.physician</field>
-        <field name="type">ir.actions.act_window</field>
         <field name="view_mode">tree,form</field>
     </record>
 

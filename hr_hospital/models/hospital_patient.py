@@ -1,27 +1,38 @@
-from odoo import models, fields
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+
+from odoo import models, fields, api
 
 
 class HospitalPatient(models.Model):
     _name = "hospital.patient"
     _description = "Patient basic info"
+    _inherit = "hospital.abstract.person"
 
-    first_name = fields.Char(required=True)
-    last_name = fields.Char(required=True)
-    address = fields.Char(required=True)
+    age = fields.Integer(
+        required=True,
+        compute="_compute_age_date",
+        readonly=True,
+        compute_sudo=True,
+    )
+    birthday_date = fields.Date(
+        string="Date of Birth",
+        required=True,
+    )
+    passport = fields.Char()
     physician_id = fields.Many2one(
         comodel_name="hospital.physician", string="Attending physician"
     )
-    visit_ids = fields.One2many(
-        comodel_name="hospital.visit",
-        inverse_name="patient_id",
-        string="Visits",
+    contact_person_ids = fields.One2many(
+        comodel_name="hospital.contact.person", inverse_name="patient_id"
     )
-    assurance = fields.Selection(
-        selection=[
-            ("basic", "Basic package"),
-            ("standard", "Standard package"),
-            ("silver", "Silver package"),
-            ("golden", "Golden package"),
-            ("platinum", "Platinum package"),
-        ],
-    )
+
+    @api.depends("age", "birthday_date")
+    def _compute_age_date(self):
+        for record in self:
+            if record.birthday_date:
+                record.age = relativedelta(
+                    datetime.now(), record.birthday_date
+                ).years
+            else:
+                record.age = 0

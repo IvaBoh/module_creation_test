@@ -2,30 +2,15 @@
 <odoo>
 
     <record id="physician_1" model="hospital.physician">
-        <field name="first_name">John</field>
-        <field name="last_name">Doe</field>
-        <field name="education">M.S</field>
-        <field name="salary">3000</field>
-        <field name="experience">10</field>
-        <field name="address">USA</field>
+        <field name="name">John</field>
     </record>
 
     <record id="physician_2" model="hospital.physician">
-        <field name="first_name">Kell</field>
-        <field name="last_name">Doe</field>
-        <field name="education">M.S</field>
-        <field name="salary">2000</field>
-        <field name="experience">5</field>
-        <field name="address">South Africa</field>
+        <field name="name">John</field>
     </record>
 
     <record id="physician_3" model="hospital.physician">
-        <field name="first_name">Bill</field>
-        <field name="last_name">Doe</field>
-        <field name="education">M.S</field>
-        <field name="salary">6000</field>
-        <field name="experience">30</field>
-        <field name="address">USA</field>
+        <field name="name">John</field>
     </record>
 
 </odoo>

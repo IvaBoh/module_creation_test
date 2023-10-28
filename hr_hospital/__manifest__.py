@@ -9,17 +9,19 @@
     "website": "https://github.com/IvaBoh",
     "depends": [
         "base",
+        # "hr_hospital",
     ],
     "data": [
         "security/ir.model.access.csv",
         "views/hr_hospital_menus.xml",
-        "data/hospital_disease_data.xml",
-        "views/hospital_disease_views.xml",
+        # "data/hospital_disease_data.xml",
+        # "views/hospital_disease_views.xml",
         "views/hospital_patient_views.xml",
         "views/hospital_physician_views.xml",
-        "views/hospital_visit_views.xml",
+        # "views/hospital_visit_views.xml",
     ],
     "demo": [
+        "data/hospital_disease_demo.xml",
         "data/hospital_patient_demo.xml",
         "data/hospital_physician_demo.xml",
     ],
