@@ -57,12 +57,12 @@ class HospitalPatientVisitMulti(models.Model):
     # @api.constrains("visit_id")
     # def _check_visit_not_selected_twice(self):
     #     print(self.visit_id)
-        # records = self.env["hospital.patient.visits"].search([])
-        # records = self.sudo().search_read(domain=[], fields=["visit_id"])
-        # print(records)
+    # records = self.env["hospital.patient.visits"].search([])
+    # records = self.sudo().search_read(domain=[], fields=["visit_id"])
+    # print(records)
 
-        # if self.id in records:
-        #     raise ValidationError("Choose another visit date")
+    # if self.id in records:
+    #     raise ValidationError("Choose another visit date")
 
     def unlink(self):
         for visit in self:
