@@ -54,6 +54,16 @@ class HospitalPatientVisitMulti(models.Model):
         if self.diagnosis_id and self.active is False:
             raise ValidationError("You can't archive record with diagnosis.")
 
+    # @api.constrains("visit_id")
+    # def _check_visit_not_selected_twice(self):
+    #     print(self.visit_id)
+        # records = self.env["hospital.patient.visits"].search([])
+        # records = self.sudo().search_read(domain=[], fields=["visit_id"])
+        # print(records)
+
+        # if self.id in records:
+        #     raise ValidationError("Choose another visit date")
+
     def unlink(self):
         for visit in self:
             if visit.diagnosis_id:
