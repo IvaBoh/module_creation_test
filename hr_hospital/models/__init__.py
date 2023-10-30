@@ -7,4 +7,5 @@ from . import (
     hospital_patient_visit_multi,
     hospital_diagnosіs,
     hospital_physician_assign_history,
+    hospital_physician_schedule,
 )

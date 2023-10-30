@@ -27,6 +27,10 @@ class HospitalPatientVisitMulti(models.Model):
         required=False,
     )
     active = fields.Boolean(default=True)
+    happened = fields.Boolean(default=False)
+    visit_id = fields.Many2one(
+        comodel_name="hospital.physician.schedule", string="Scheduled visit"
+    )
 
     @api.onchange("visit_date", "physician_id")
     def _onchange_visit_date(self):
@@ -46,7 +50,7 @@ class HospitalPatientVisitMulti(models.Model):
             raise ValidationError("You can't change expired visit.")
 
     @api.constrains("active")
-    def check_active(self):
+    def _check_active(self):
         if self.diagnosis_id and self.active is False:
             raise ValidationError("You can't archive record with diagnosis.")
 

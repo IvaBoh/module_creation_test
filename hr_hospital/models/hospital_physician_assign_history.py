@@ -11,11 +11,9 @@ class HospitalPhysicianAssignHistory(models.Model):
     )
     patient_id = fields.Many2one(
         comodel_name="hospital.patient",
-        string="The patient who attends his physician",
         required=False,
     )
     physician_id = fields.Many2one(
         comodel_name="hospital.physician",
-        string="The physician who examines a patient",
         required=False,
     )

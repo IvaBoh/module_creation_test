@@ -5,8 +5,16 @@
         <field name="name">hospital.physician.view.form</field>
         <field name="model">hospital.physician</field>
         <field name="arch" type="xml">
-            <form>
-                <field name="name"/>
+            <form string="Physician info">
+                <sheet>
+                    <group name="Physician"
+                           string="Physician info">
+                        <field name="name"/>
+                        <field name="speciality"/>
+                        <field name="intern"/>
+                        <field name="mentor_id"/>
+                    </group>
+                </sheet>
             </form>
         </field>
     </record>
@@ -17,6 +25,9 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
+                <field name="speciality"/>
+                <field name="intern"/>
+                <field name="mentor_id"/>
             </tree>
         </field>
     </record>
