@@ -1,6 +1,6 @@
 {
     "name": "Hospital Management",
-    "version": "15.0.0.0.0",
+    "version": "15.0.1.1.0",
     "category": "Services",
     "summary": """Odoo module to manage the basic processes of clinic""",
     "license": "LGPL-3",
@@ -13,15 +13,18 @@
     "data": [
         "security/ir.model.access.csv",
         "views/hr_hospital_menus.xml",
-        "data/hospital_disease_data.xml",
         "views/hospital_disease_views.xml",
         "views/hospital_patient_views.xml",
         "views/hospital_physician_views.xml",
-        "views/hospital_visit_views.xml",
+        "views/hospital_patient_visit_multi_views.xml",
+        "views/hospital_physician_assign_history_views.xml",
+        "views/hospital_physician_schedule_views.xml",
     ],
     "demo": [
+        "data/hospital_disease_demo.xml",
         "data/hospital_patient_demo.xml",
         "data/hospital_physician_demo.xml",
+        "data/hospital_diagnosis_demo.xml",
     ],
     "images": ["static/description/icon.png"],
     "support": "antutilo@gmail.com",

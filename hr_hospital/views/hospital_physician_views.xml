@@ -5,10 +5,16 @@
         <field name="name">hospital.physician.view.form</field>
         <field name="model">hospital.physician</field>
         <field name="arch" type="xml">
-            <form>
-                <field name="first_name"/>
-                <field name="last_name"/>
-                <field name="patient_ids"/>
+            <form string="Physician info">
+                <sheet>
+                    <group name="Physician"
+                           string="Physician info">
+                        <field name="name"/>
+                        <field name="speciality"/>
+                        <field name="intern"/>
+                        <field name="mentor_id"/>
+                    </group>
+                </sheet>
             </form>
         </field>
     </record>
@@ -18,9 +24,10 @@
         <field name="model">hospital.physician</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="first_name"/>
-                <field name="last_name"/>
-                <field name="patient_ids"/>
+                <field name="name"/>
+                <field name="speciality"/>
+                <field name="intern"/>
+                <field name="mentor_id"/>
             </tree>
         </field>
     </record>
@@ -28,13 +35,13 @@
     <record id="hospital_physician_action" model="ir.actions.act_window">
         <field name="name">Physicians</field>
         <field name="res_model">hospital.physician</field>
-        <field name="type">ir.actions.act_window</field>
         <field name="view_mode">tree,form</field>
     </record>
 
     <menuitem id="physician_menu"
+              name="Physicians"
               parent="hospital_main_menu"
               action="hospital_physician_action"
-              sequence="20"/>
+              sequence="30"/>
 
 </odoo>

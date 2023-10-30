@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hospital_patient_visit_view_form" model="ir.ui.view">
+        <field name="name">hospital.patient.visit.multi.form</field>
+        <field name="model">hospital.patient.visit.multi</field>
+        <field name="arch" type="xml">
+            <form string="Patient">
+                <sheet>
+                    <group name="patient" string="Patient Visit Information">
+                        <field name="id"/>
+                        <field name="visit_date"/>
+                        <field name="treatment"/>
+                        <field name="active"/>
+                        <field name="diagnosis_id"/>
+                        <field name="physician_id"/>
+                        <field name="visit_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hospital_patient_visit_view_tree" model="ir.ui.view">
+        <field name="name">hospital.patient.visit.multi.tree</field>
+        <field name="model">hospital.patient.visit.multi</field>
+        <field name="arch" type="xml">
+            <tree string="Patient visit">
+                <field name="visit_date"/>
+                <field name="treatment"/>
+                <field name="active"/>
+                <field name="diagnosis_id"/>
+                <field name="physician_id"/>
+                <field name="visit_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hospital_patient_visit_action" model="ir.actions.act_window">
+        <field name="name">Patient visits</field>
+        <field name="res_model">hospital.patient.visit.multi</field>
+        <field name='view_mode'>tree,form</field>
+    </record>
+
+    <menuitem id="patient_visit_menu"
+              name="Patient visits"
+              parent="hospital_main_menu"
+              action="hospital_patient_visit_action"
+              sequence="40"/>
+
+</odoo>

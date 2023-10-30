@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hospital_disease_all" model="hospital.disease"
+            forcecreate="True">
+        <field name="name">Ancestor disease</field>
+        <field name="description">No data ...</field>
+        <field name="treatment">No treatment</field>
+        <field name="symptoms">Horrible</field>
+    </record>
+
+    <record id="hospital_disease_1" model="hospital.disease"
+            forcecreate="True">
+        <field name="parent_id" ref="hospital_disease_all"/>
+        <field name="name">Mieloma</field>
+        <field name="description">Mieloma is a specific disease ...</field>
+        <field name="treatment">Some medicine</field>
+        <field name="symptoms">Mieloma symptoms</field>
+    </record>
+
+    <record id="hospital_disease_2" model="hospital.disease"
+            forcecreate="True">
+        <field name="parent_id" ref="hospital_disease_1"/>
+        <field name="name">Sarcoma</field>
+        <field name="description">Sarcoma is a specific disease ...</field>
+        <field name="treatment">Some medicine</field>
+        <field name="symptoms">Sarcoma symptoms</field>
+    </record>
+
+    <record id="hospital_disease_3" model="hospital.disease"
+            forcecreate="True">
+        <field name="parent_id" ref="hospital_disease_2"/>
+        <field name="name">Alzheimer's Disease</field>
+        <field name="description">Alzheimer's is a specific disease ...</field>
+        <field name="treatment">Some medicine</field>
+        <field name="symptoms">Alzheimer's Disease symptoms</field>
+    </record>
+
+</odoo>

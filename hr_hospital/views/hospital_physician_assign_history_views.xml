@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hospital_physician_assign_history_view_form"
+            model="ir.ui.view">
+        <field name="name">hospital.physician.assign.history.form</field>
+        <field name="model">hospital.physician.assign.history</field>
+        <field name="arch" type="xml">
+            <form string="Assignment change history of a physician">
+                <sheet>
+                    <group name="Assignment"
+                           string="Assignment Information">
+                        <field name="assignment_date"/>
+                        <field name="patient_id"/>
+                        <field name="physician_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hospital_physician_assign_history_view_tree"
+            model="ir.ui.view">
+        <field name="name">hospital.physician.assign.history.tree</field>
+        <field name="model">hospital.physician.assign.history</field>
+        <field name="arch" type="xml">
+            <tree string="Assignment change history of a physician">
+                <field name="assignment_date"/>
+                <field name="patient_id"/>
+                <field name="physician_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hospital_physician_assign_history_action"
+            model="ir.actions.act_window">
+        <field name="name">Assignment history</field>
+        <field name="res_model">hospital.physician.assign.history</field>
+        <field name='view_mode'>tree,form</field>
+    </record>
+
+    <menuitem id="assignment_visit_menu"
+              name="Assignment history"
+              parent="hospital_main_menu"
+              action="hospital_physician_assign_history_action"
+              sequence="60"/>
+
+</odoo>
