@@ -40,3 +40,14 @@ class HospitalPatient(models.Model):
                 ).years
             else:
                 record.age = 0
+
+    def write(self, vals):
+        res = super().write(vals)
+        if vals.get("physician_id"):
+            physician = self.env["hospital.physician"].browse(
+                vals.get("physician_id")
+            )
+            self.env["hospital.physician.assign.history"].create(
+                {"physician_id": physician.id, "patient_id": self.id}
+            )
+        return res

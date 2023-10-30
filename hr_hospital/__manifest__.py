@@ -17,6 +17,7 @@
         "views/hospital_patient_views.xml",
         "views/hospital_physician_views.xml",
         "views/hospital_patient_visit_multi_views.xml",
+        "views/hospital_physician_assign_history_views.xml",
     ],
     "demo": [
         "data/hospital_disease_demo.xml",

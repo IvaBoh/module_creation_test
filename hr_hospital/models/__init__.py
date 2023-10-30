@@ -6,4 +6,5 @@ from . import (
     hospital_physician,
     hospital_patient_visit_multi,
     hospital_diagnosіs,
+    hospital_physician_assign_history,
 )

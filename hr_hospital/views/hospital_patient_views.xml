@@ -12,6 +12,7 @@
                         <field name="birthday_date"/>
                         <field name="age"/>
                         <field name="passport"/>
+                        <field name="physician_id"/>
                     </group>
                 </sheet>
             </form>
@@ -27,6 +28,7 @@
                 <field name="birthday_date"/>
                 <field name="age"/>
                 <field name="passport"/>
+                <field name="physician_id"/>
             </tree>
         </field>
     </record>
