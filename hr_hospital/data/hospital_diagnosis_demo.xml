@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="diagnosis_1" model="hospital.diagnosis" forcecreate="True">
+        <field name="case_date" eval="datetime(2019, 5, 17)"/>
+        <field name="treatment">None</field>
+        <field name="patient_id" ref="patient_1"/>
+        <field name="physician_id" ref="physician_1"/>
+    </record>
+
+    <record id="diagnosis_2" model="hospital.diagnosis" forcecreate="True">
+        <field name="case_date" eval="datetime(2018, 5, 17)"/>
+        <field name="treatment">None</field>
+        <field name="patient_id" ref="patient_1"/>
+        <field name="physician_id" ref="physician_1"/>
+    </record>
+
+    <record id="diagnosis_3" model="hospital.diagnosis" forcecreate="True">
+        <field name="case_date" eval="datetime(2017, 5, 17)"/>
+        <field name="treatment">None</field>
+        <field name="patient_id" ref="patient_1"/>
+        <field name="physician_id" ref="physician_1"/>
+    </record>
+
+</odoo>

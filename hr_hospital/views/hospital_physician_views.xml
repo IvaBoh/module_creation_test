@@ -28,8 +28,9 @@
     </record>
 
     <menuitem id="physician_menu"
+              name="Physicians"
               parent="hospital_main_menu"
               action="hospital_physician_action"
-              sequence="20"/>
+              sequence="30"/>
 
 </odoo>

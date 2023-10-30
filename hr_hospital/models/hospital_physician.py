@@ -12,4 +12,5 @@ class HospitalPhysician(models.Model):
         comodel_name="hospital.patient",
         inverse_name="physician_id",
         string="Assigned patients",
+        required=False,
     )

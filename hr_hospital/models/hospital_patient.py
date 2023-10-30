@@ -21,10 +21,14 @@ class HospitalPatient(models.Model):
     )
     passport = fields.Char()
     physician_id = fields.Many2one(
-        comodel_name="hospital.physician", string="Attending physician"
+        comodel_name="hospital.physician",
+        string="Attending physician",
+        required=False,
     )
     contact_person_ids = fields.One2many(
-        comodel_name="hospital.contact.person", inverse_name="patient_id"
+        comodel_name="hospital.contact.person",
+        inverse_name="patient_id",
+        required=False,
     )
 
     @api.depends("age", "birthday_date")

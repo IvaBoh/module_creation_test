@@ -6,7 +6,7 @@
         <field name="model">hospital.disease</field>
         <field name="arch" type="xml">
             <form>
-                <field name="title"/>
+                <field name="name"/>
                 <field name="description"/>
                 <field name="symptoms"/>
                 <field name="treatment"/>
@@ -20,7 +20,8 @@
         <field name="model">hospital.disease</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="title"/>
+                <field name="parent_id"/>
+                <field name="name"/>
                 <field name="description"/>
                 <field name="symptoms"/>
                 <field name="treatment"/>
@@ -28,5 +29,17 @@
             </tree>
         </field>
     </record>
+
+    <record id="hospital_disease_action" model="ir.actions.act_window">
+        <field name="name">Diseases</field>
+        <field name="res_model">hospital.disease</field>
+        <field name='view_mode'>tree,form</field>
+    </record>
+
+    <menuitem id="disease_menu"
+              name="Diseases"
+              parent="hospital_main_menu"
+              action="hospital_disease_action"
+              sequence="50"/>
 
 </odoo>

@@ -4,5 +4,6 @@ from . import (
     hospital_disease,
     hospital_patient,
     hospital_physician,
-    hospital_visit,
+    hospital_patient_visit_multi,
+    hospital_diagnosіs,
 )

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="physician_1" model="hospital.physician">
-        <field name="name">John</field>
+    <record id="physician_1" model="hospital.physician" forcecreate="True">
+        <field name="name">John Karter</field>
     </record>
 
-    <record id="physician_2" model="hospital.physician">
-        <field name="name">John</field>
+    <record id="physician_2" model="hospital.physician" forcecreate="True">
+        <field name="name">Bill Murey</field>
     </record>
 
-    <record id="physician_3" model="hospital.physician">
-        <field name="name">John</field>
+    <record id="physician_3" model="hospital.physician" forcecreate="True">
+        <field name="name">Alice Wonderland</field>
     </record>
 
 </odoo>

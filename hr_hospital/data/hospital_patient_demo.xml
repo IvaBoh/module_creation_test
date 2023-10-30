@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="patient_1" model="hospital.patient">
+    <record id="patient_1" model="hospital.patient" forcecreate="True">
         <field name="name">Kristofer Nolan</field>
+        <field name="birthday_date" eval="datetime(2020, 5, 17)"/>
+        <field name="passport">None</field>
     </record>
 
-    <record id="patient_2" model="hospital.patient">
+    <record id="patient_2" model="hospital.patient" forcecreate="True">
         <field name="name">Neill Blomkamp</field>
+        <field name="birthday_date" eval="datetime(2020, 5, 17)"/>
+        <field name="passport">None</field>
     </record>
 
-    <record id="patient_3" model="hospital.patient">
+    <record id="patient_3" model="hospital.patient" forcecreate="True">
         <field name="name">Martin Scorsese</field>
+        <field name="birthday_date" eval="datetime(2020, 5, 17)"/>
+        <field name="passport">None</field>
     </record>
 
 </odoo>
