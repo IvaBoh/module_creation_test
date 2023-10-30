@@ -1,4 +1,3 @@
-from datetime import datetime
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError, UserError
 
@@ -10,8 +9,6 @@ class HospitalPatientVisitMulti(models.Model):
     visit_date = fields.Datetime(
         required=True,
         default=lambda self: fields.Datetime.now(),
-        # compute="_compute_visit_date",
-        # compute_sudo=True,
     )
     treatment = fields.Char(required=True)
     patient_id = fields.Many2one(
@@ -31,67 +28,33 @@ class HospitalPatientVisitMulti(models.Model):
     )
     active = fields.Boolean(default=True)
 
-    # work
-    # @api.constrains("visit_date")
-    # def _check_visit_date(self):
-    # today = fields.Datetime.today()
-    # visit_value = fields.Datetime.to_datetime(self.visit_date)
-    # if visit_value < today:
-    #     raise ValidationError("Future visit date must be after today.")
-    # self.check_expiration()
-
-    # @api.constrains("visit_date")
-    # def _check_visit_date(self):
-
-    def check_expiration(self):
-        today = fields.Datetime.today()
-        visit_value = fields.Datetime.to_datetime(self.visit_date)
-        if visit_value < today:
-            raise ValidationError("Future visit date must be after today.")
-
-    # def compare_dates(datetime_1, datetime_2):
-    #     today = fields.Datetime.today()
-    #     visit_value = fields.Datetime.to_datetime(self.visit_date)
-    #     if visit_value < today:
-    #         raise ValidationError("Future visit date must be after today.")
-
-    @api.onchange("visit_date")
+    @api.onchange("visit_date", "physician_id")
     def _onchange_visit_date(self):
         old_visit_value = self._origin.visit_date
-        print(old_visit_value, "in change, old date")
         date_old = fields.Datetime.to_datetime(old_visit_value)
 
         new_visit_value = self.visit_date
-        print(new_visit_value, "in change, new date")
         date_new = fields.Datetime.to_datetime(new_visit_value)
 
-        # if date_old < date_new < fields.Datetime.today():
-        #     raise ValidationError("You can't change expired visit date.")
+        if not old_visit_value:
+            if date_new < fields.Datetime.now():
+                raise ValidationError(
+                    "Select future visit date that is today or later"
+                )
 
-    # def write(self, vals):
-    #     print(self.visit_date, "In self")
-    #     if "visit_date" in vals:
-    #         value = fields.Datetime.to_datetime(vals["visit_date"])
-    #         print(value, "In write")
-    #         if value < datetime.now():
-    #             print("old visit")
-    #     #         raise ValidationError("Selected today's Date >>>>>>>>>>>>>>")
-    #     return super(HospitalPatientVisitMulti, self).write(vals)
+        if old_visit_value and date_old < fields.Datetime.now():
+            raise ValidationError("You can't change expired visit.")
 
-    # def update(self, vals):
-    #     print(self.visit_date, "In self update")
-    #     if "visit_date" in vals:
-    #         print(vals["visit_date"], "In update")
-    #     #     if fields.Date.to_date(vals["today_date"]) == fields.Date.today:
-    #     #         raise ValidationError("Selected today's Date >>>>>>>>>>>>>>")
-    #     return super(HospitalPatientVisitMulti, self).update(vals)
+    @api.constrains("active")
+    def check_active(self):
+        if self.diagnosis_id and self.active is False:
+            raise ValidationError("You can't archive record with diagnosis.")
 
-    # work
-    # def unlink(self):
-    #     for visit in self:
-    #         if visit.diagnosis_id:
-    #             raise UserError(
-    #                 "Deletion not allowed due to the existence of the "
-    #                 "diagnosis."
-    #             )
-    #     return super(HospitalPatientVisitMulti, self).unlink()
+    def unlink(self):
+        for visit in self:
+            if visit.diagnosis_id:
+                raise UserError(
+                    "Deletion not allowed due to the existence of the "
+                    "diagnosis."
+                )
+        return super(HospitalPatientVisitMulti, self).unlink()
