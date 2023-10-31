@@ -14,12 +14,12 @@ class HospitalPatientVisitMulti(models.Model):
     patient_id = fields.Many2one(
         comodel_name="hospital.patient",
         string="The patient who visits a physician",
-        required=False,
+        required=True,
     )
     physician_id = fields.Many2one(
         comodel_name="hospital.physician",
         string="The physician who examines a patient",
-        required=False,
+        required=True,
     )
     diagnosis_id = fields.Many2one(
         comodel_name="hospital.diagnosis",
@@ -51,18 +51,26 @@ class HospitalPatientVisitMulti(models.Model):
 
     @api.constrains("active")
     def _check_active(self):
-        if self.diagnosis_id and self.active is False:
-            raise ValidationError("You can't archive record with diagnosis.")
+        for record in self:
+            if record.diagnosis_id and record.active is False:
+                raise ValidationError(
+                    "You can't archive record with diagnosis."
+                )
 
-    # @api.constrains("visit_id")
-    # def _check_visit_not_selected_twice(self):
-    #     print(self.visit_id)
-    # records = self.env["hospital.patient.visits"].search([])
-    # records = self.sudo().search_read(domain=[], fields=["visit_id"])
-    # print(records)
+    @api.constrains("visit_id")
+    def _check_schedule_visit_date_availability(self):
+        self.ensure_one()
+        patient_visits = (
+            self.env["hospital.patient.visit.multi"]
+            .search([("id", "!=", self.id)])
+            .mapped("visit_id")
+        )
 
-    # if self.id in records:
-    #     raise ValidationError("Choose another visit date")
+        if self.visit_id in patient_visits:
+            raise ValidationError(
+                "Selected physician appointment time "
+                "has already been occupied"
+            )
 
     def unlink(self):
         for visit in self:
@@ -72,3 +80,14 @@ class HospitalPatientVisitMulti(models.Model):
                     "diagnosis."
                 )
         return super(HospitalPatientVisitMulti, self).unlink()
+
+    def name_get(self):
+        return [
+            (
+                record.id,
+                f"{record.patient_id.name} has a visit on "
+                f"{record.visit_date} to "
+                f"{record.physician_id.name}",
+            )
+            for record in self
+        ]

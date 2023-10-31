@@ -19,6 +19,7 @@ class HospitalPhysicianSchedule(models.Model):
 
     @api.constrains("visit_date", "hour")
     def _check_visit_date(self):
+        self.ensure_one()
         records = self.sudo().search_read(
             domain=[("id", "!=", self.id)], fields=["visit_date", "hour"]
         )
@@ -27,9 +28,13 @@ class HospitalPhysicianSchedule(models.Model):
             if fields.Date.to_date(self.visit_date) == record.get(
                 "visit_date"
             ) and self.hour == record.get("hour"):
-                raise ValidationError("Choose another date or time")
+                raise ValidationError(
+                    "Selected physician appointment time "
+                    "has already been occupied"
+                )
 
     def name_get(self):
         return [
-            (tag.id, "%s: %s" % (tag.hour, tag.visit_date)) for tag in self
+            (record.id, "%s:00 %s" % (record.hour, record.visit_date))
+            for record in self
         ]
