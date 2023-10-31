@@ -22,3 +22,4 @@ class HospitalDiagnosis(models.Model):
         string="The diagnosed disease",
         required=False,
     )
+    comment = fields.Text(required=False)
