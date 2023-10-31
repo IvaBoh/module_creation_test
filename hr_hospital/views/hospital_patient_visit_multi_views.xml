@@ -14,6 +14,7 @@
                         <field name="active"/>
                         <field name="diagnosis_id"/>
                         <field name="physician_id"/>
+                        <field name="patient_id"/>
                         <field name="visit_id"/>
                     </group>
                 </sheet>
@@ -31,6 +32,7 @@
                 <field name="active"/>
                 <field name="diagnosis_id"/>
                 <field name="physician_id"/>
+                <field name="patient_id"/>
                 <field name="visit_id"/>
             </tree>
         </field>

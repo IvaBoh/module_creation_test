@@ -41,13 +41,26 @@ class HospitalPatient(models.Model):
             else:
                 record.age = 0
 
-    def write(self, vals):
-        res = super().write(vals)
+    @api.model
+    def create(self, vals):
+        patient = super().create(vals)
         if vals.get("physician_id"):
-            physician = self.env["hospital.physician"].browse(
-                vals.get("physician_id")
-            )
             self.env["hospital.physician.assign.history"].create(
-                {"physician_id": physician.id, "patient_id": self.id}
+                {
+                    "physician_id": vals.get("physician_id"),
+                    "patient_id": patient.id,
+                }
             )
-        return res
+        return patient
+
+    def write(self, vals):
+        for record in self:
+            res = super().write(vals)
+            if vals.get("physician_id"):
+                record.env["hospital.physician.assign.history"].create(
+                    {
+                        "physician_id": record.physician_id.id,
+                        "patient_id": record.id,
+                    }
+                )
+            return res
