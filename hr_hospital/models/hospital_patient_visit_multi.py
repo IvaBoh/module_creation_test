@@ -7,7 +7,7 @@ class HospitalPatientVisitMulti(models.Model):
     _description = "Patient visits to attending physician"
 
     visit_date = fields.Datetime(
-        required=True,
+        required=False,
         default=lambda self: fields.Datetime.now(),
     )
     treatment = fields.Char(required=True)
@@ -85,9 +85,9 @@ class HospitalPatientVisitMulti(models.Model):
         return [
             (
                 record.id,
-                f"{record.patient_id.name} has a visit on "
-                f"{record.visit_date} to "
-                f"{record.physician_id.name}",
+                f"{record.patient_id.name} has a visit"
+                f"on {record.visit_id.visit_date} at {record.visit_id.hour}:00 "
+                f"to {record.physician_id.name}",
             )
             for record in self
         ]

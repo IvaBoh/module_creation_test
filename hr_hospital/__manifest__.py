@@ -21,6 +21,7 @@
         "views/hospital_physician_schedule_views.xml",
         "views/hospital_diagnosis_views.xml",
         "wizard/hospital_physician_reassignment_views.xml",
+        "wizard/hospital_visit_reschedule_views.xml",
     ],
     "demo": [
         "data/hospital_disease_demo.xml",

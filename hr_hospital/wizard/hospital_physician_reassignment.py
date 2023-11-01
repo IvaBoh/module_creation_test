@@ -1,5 +1,4 @@
-from odoo import _, api, fields, models
-from odoo.exceptions import ValidationError
+from odoo import api, fields, models
 
 
 class HospitalPhysicianReassignment(models.TransientModel):
@@ -16,7 +15,7 @@ class HospitalPhysicianReassignment(models.TransientModel):
     @api.model
     def action_open_wizard(self):
         return {
-            "name": _("Physician reassignment"),
+            "name": "Physician reassignment",
             "type": "ir.actions.act_window",
             "view_mode": "form",
             "res_model": "hospital.physician.reassignment",

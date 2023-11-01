@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="view_reassign_doctor_wizard_form" model="ir.ui.view">
-        <field name="name">hospital.physician.reassignment.form</field>
+    <record id="hospital_physician_reassignment_view_form" model="ir.ui.view">
+        <field name="name">hospital.physician.reassignment.view.form</field>
         <field name="model">hospital.physician.reassignment</field>
         <field name="arch" type="xml">
             <form string="Physician reassignment">
