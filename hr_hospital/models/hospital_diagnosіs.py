@@ -35,7 +35,10 @@ class HospitalDiagnosis(models.Model):
                 )
 
     def name_get(self):
-        return [
-            (record.id, fields.Date.to_string(record.case_date))
-            for record in self
-        ]
+        list_of_names = []
+        for record in self:
+            if record.disease_id:
+                list_of_names.append((record.id, f"{record.disease_id.name}"))
+            else:
+                list_of_names.append((record.id, record.case_date))
+        return list_of_names

@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 
 class HospitalVisitReschedule(models.TransientModel):
@@ -21,6 +22,15 @@ class HospitalVisitReschedule(models.TransientModel):
         string="New appointment to the same physician",
     )
 
+    @api.constrains("visit_id", "appointment_id")
+    def _check_physician(self):
+        for record in self:
+            if (
+                record.visit_id.physician_id.id
+                is not record.appointment_id.physician_id.id
+            ):
+                raise ValidationError("Select appointment with you physician.")
+
     @api.model
     def action_open_wizard(self):
         return {
@@ -36,8 +46,3 @@ class HospitalVisitReschedule(models.TransientModel):
             record.visit_id.write({"visit_id": record.appointment_id.id})
             print(record.visit_id.visit_date)
             print(record.appointment_id.visit_date)
-        # self.ensure_one()
-        # for record in self.env["hospital.patient"].browse(
-        #     self.env.context["active_ids"]
-        # ):
-        #     record.write({"physician_id": self.physician_id.id})

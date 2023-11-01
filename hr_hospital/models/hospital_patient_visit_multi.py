@@ -10,7 +10,7 @@ class HospitalPatientVisitMulti(models.Model):
         required=False,
         default=lambda self: fields.Datetime.now(),
     )
-    treatment = fields.Char(required=True)
+    treatment = fields.Char(required=False)
     patient_id = fields.Many2one(
         comodel_name="hospital.patient",
         string="The patient who visits a physician",
@@ -49,7 +49,16 @@ class HospitalPatientVisitMulti(models.Model):
         if old_visit_value and date_old < fields.Datetime.now():
             raise ValidationError("You can't change expired visit.")
 
-    @api.constrains("active")
+    @api.constrains("physician_id", "visit_id")
+    def _check_physician(self):
+        for record in self:
+            if record.physician_id.id is not record.visit_id.physician_id.id:
+                raise ValidationError(
+                    "You try to make appointment to the physician "
+                    "that is not your assigned physician."
+                )
+
+    @api.constrains("active", "diagnosis_id")
     def _check_active(self):
         for record in self:
             if record.diagnosis_id and record.active is False:
@@ -85,7 +94,7 @@ class HospitalPatientVisitMulti(models.Model):
         return [
             (
                 record.id,
-                f"{record.patient_id.name} has a visit"
+                f"{record.patient_id.name} has a visit "
                 f"on {record.visit_id.visit_date} at {record.visit_id.hour}:00 "
                 f"to {record.physician_id.name}",
             )

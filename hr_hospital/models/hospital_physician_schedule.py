@@ -39,6 +39,10 @@ class HospitalPhysicianSchedule(models.Model):
 
     def name_get(self):
         return [
-            (record.id, "%s:00 %s" % (record.hour, record.visit_date))
+            (
+                record.id,
+                "%s:00 %s %s "
+                % (record.hour, record.visit_date, record.physician_id.name),
+            )
             for record in self
         ]
