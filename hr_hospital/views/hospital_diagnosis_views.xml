@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hospital_diagnosis_view_form" model="ir.ui.view">
+        <field name="name">hospital.diagnosis.view.form</field>
+        <field name="model">hospital.diagnosis</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group name="diagnosis" string="Diagnosis Information">
+                        <field name="case_date"/>
+                        <field name="treatment"/>
+                        <field name="patient_id"/>
+                        <field name="physician_id"/>
+                        <field name="disease_id"/>
+                        <field name="comment"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hospital_diagnosis_view_tree" model="ir.ui.view">
+        <field name="name">hospital.diagnosis.view.tree</field>
+        <field name="model">hospital.diagnosis</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="case_date"/>
+                <field name="treatment"/>
+                <field name="patient_id"/>
+                <field name="physician_id"/>
+                <field name="disease_id"/>
+                <field name="comment"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hospital_diagnosis_action" model="ir.actions.act_window">
+        <field name="name">Diagnoses</field>
+        <field name="res_model">hospital.diagnosis</field>
+        <field name='view_mode'>tree,form</field>
+    </record>
+
+    <menuitem id="diagnosis_menu"
+              name="Diagnoses"
+              parent="hospital_main_menu"
+              action="hospital_diagnosis_action"
+              sequence="100"/>
+
+</odoo>

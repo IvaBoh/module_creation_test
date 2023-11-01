@@ -17,17 +17,21 @@ class HospitalPhysicianSchedule(models.Model):
         required=False,
     )
 
-    @api.constrains("visit_date", "hour")
+    @api.constrains("visit_date", "hour", "physician_id")
     def _check_visit_date(self):
         self.ensure_one()
         records = self.sudo().search_read(
-            domain=[("id", "!=", self.id)], fields=["visit_date", "hour"]
+            domain=[("id", "!=", self.id)],
+            fields=["visit_date", "hour", "physician_id"],
         )
 
         for record in records:
-            if fields.Date.to_date(self.visit_date) == record.get(
-                "visit_date"
-            ) and self.hour == record.get("hour"):
+            if (
+                fields.Date.to_date(self.visit_date)
+                == record.get("visit_date")
+                and self.hour == record.get("hour")
+                and self.physician_id.id == record.get("physician_id")[0]
+            ):
                 raise ValidationError(
                     "Selected physician appointment time "
                     "has already been occupied"
