@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_reassign_doctor_wizard_form" model="ir.ui.view">
+        <field name="name">hospital.physician.reassignment.form</field>
+        <field name="model">hospital.physician.reassignment</field>
+        <field name="arch" type="xml">
+            <form string="Physician reassignment">
+                <sheet>
+                    <group>
+                        <field name="physician_id"
+                               options="{'no_create': True}"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_reassignment"
+                            string="Reassign"
+                            type="object"
+                            class="btn-primary"/>
+                    <button special="cancel" class="oe_link" string="Close"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="hospital_physician_reassignment_action"
+            model="ir.actions.act_window">
+        <field name="name">Physician reassignment</field>
+        <field name="res_model">hospital.physician.reassignment</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id"
+               ref="model_hospital_patient"/>
+        <field name="binding_view_types">list</field>
+        <field name="binding_type">action</field>
+    </record>
+
+</odoo>
