@@ -21,7 +21,6 @@
         </field>
     </record>
 
-
     <record id="hospital_visit_reschedule_action"
             model="ir.actions.act_window">
         <field name="name">Visit Reschedule</field>
@@ -33,16 +32,5 @@
         <field name="binding_view_types">list,form</field>
         <field name="binding_type">action</field>
     </record>
-
-    <menuitem id="visit_menu"
-              parent="hr_hospital_menu_root"
-              name="Visit menu"
-              sequence="10"/>
-
-    <menuitem id="visit_reschedule_menu"
-              name="Visit reschedule"
-              action="hospital_visit_reschedule_action"
-              parent="visit_menu"
-              sequence="10"/>
 
 </odoo>
