@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hospital_create_schedule_view_form" model="ir.ui.view">
+        <field name="name">hospital.create.schedule.view.form</field>
+        <field name="model">hospital.create.schedule</field>
+        <field name="arch" type="xml">
+            <form string="Create schedule">
+                <sheet>
+                    <group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_create_schedule"
+                            string="Reassign"
+                            type="object"
+                            class="btn-primary"/>
+                    <button special="cancel" class="oe_link" string="Close"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="hospital_create_schedule_action"
+            model="ir.actions.act_window">
+        <field name="name">Create schedule</field>
+        <field name="res_model">hospital.create.schedule</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_type">action</field>
+    </record>
+
+    <menuitem id="visit_menu"
+              parent="hr_hospital_menu_root"
+              name="Visit menu"
+              sequence="10"/>
+
+    <menuitem id="visit_reschedule_menu"
+              name="Visit reschedule"
+              action="hospital_create_schedule_action"
+              parent="visit_menu"
+              sequence="10"/>
+
+</odoo>

@@ -13,7 +13,6 @@ class HospitalPhysicianSchedule(models.Model):
     )
     physician_id = fields.Many2one(
         comodel_name="hospital.physician",
-        string="The physician who made a diagnosis",
         required=False,
     )
 

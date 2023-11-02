@@ -1,2 +1,5 @@
-from . import hospital_physician_reassignment
-from . import hospital_visit_reschedule
+from . import (
+    hospital_physician_reassignment,
+    hospital_visit_reschedule,
+    hospital_create_schedule,
+)
