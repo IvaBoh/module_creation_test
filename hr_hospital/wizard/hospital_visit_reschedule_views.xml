@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hospital_visit_reschedule_view_form" model="ir.ui.view">
+        <field name="name">hospital.visit.reschedule.view.form</field>
+        <field name="model">hospital.visit.reschedule</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="visit_id"/>
+                    <field name="appointment_id"/>
+                </group>
+                <footer>
+                    <button name="action_reschedule"
+                            string="Reschedule"
+                            type="object"
+                            class="btn-primary"/>
+                    <button special="cancel" class="oe_link" string="Close"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="hospital_visit_reschedule_action"
+            model="ir.actions.act_window">
+        <field name="name">Visit Reschedule</field>
+        <field name="res_model">hospital.visit.reschedule</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id"
+               ref="model_hospital_patient_visit_multi"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="binding_type">action</field>
+    </record>
+
+</odoo>

@@ -1,4 +1,5 @@
-from odoo import models, fields
+from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError
 
 
 class HospitalDiagnosis(models.Model):
@@ -23,3 +24,20 @@ class HospitalDiagnosis(models.Model):
         required=False,
     )
     comment = fields.Text(required=False)
+
+    @api.constrains("physician_id", "comment")
+    def _check_comment(self):
+        for record in self:
+            if not record.comment and record.physician_id.intern:
+                raise ValidationError(
+                    _("Mentor must comment the intern diagnosis.")
+                )
+
+    def name_get(self):
+        list_of_names = []
+        for record in self:
+            if record.disease_id:
+                list_of_names.append((record.id, f"{record.disease_id.name}"))
+            else:
+                list_of_names.append((record.id, record.case_date))
+        return list_of_names

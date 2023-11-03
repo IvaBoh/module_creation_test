@@ -24,7 +24,7 @@
         <field name="name">hospital.physician.schedule.tree</field>
         <field name="model">hospital.physician.schedule</field>
         <field name="arch" type="xml">
-            <tree string="Schedule of a physician">
+            <tree>
                 <field name="visit_date"/>
                 <field name="hour"/>
                 <field name="physician_id"/>

@@ -7,9 +7,7 @@
     "author": "Iva Boh",
     "maintainer": "https://github.com/IvaBoh",
     "website": "https://github.com/IvaBoh",
-    "depends": [
-        "base",
-    ],
+    "depends": ["base"],
     "data": [
         "security/ir.model.access.csv",
         "views/hr_hospital_menus.xml",
@@ -19,6 +17,13 @@
         "views/hospital_patient_visit_multi_views.xml",
         "views/hospital_physician_assign_history_views.xml",
         "views/hospital_physician_schedule_views.xml",
+        "views/hospital_diagnosis_views.xml",
+        "wizard/hospital_physician_reassignment_views.xml",
+        "wizard/hospital_visit_reschedule_views.xml",
+        "wizard/hospital_create_schedule_views.xml",
+        "wizard/hospital_disease_analytic_report_views.xml",
+        "report/report.xml",
+        "report/disease_count.xml",
     ],
     "demo": [
         "data/hospital_disease_demo.xml",

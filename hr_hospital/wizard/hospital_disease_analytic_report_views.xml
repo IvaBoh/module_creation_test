@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hospital_disease_analytic_report_view_form" model="ir.ui.view">
+        <field name="name">hospital.disease.analytic.report.form</field>
+        <field name="model">hospital.disease.analytic.report</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="year"/>
+                    <field name="month"/>
+                </group>
+                <footer>
+                    <button name="action_create_report"
+                            string="Create Report"
+                            type="object"
+                            class="btn-primary"/>
+                    <button special="cancel" class="oe_link" string="Close"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="hospital_disease_analytic_report_server_action"
+            model="ir.actions.server">
+        <field name="name">Disease analytic report</field>
+        <field name="model_id" ref="model_hospital_disease_analytic_report"/>
+        <field name="state">code</field>
+        <field name="code">
+            action = model.action_open_wizard()
+        </field>
+        <field name="binding_model_id" ref="model_hospital_physician"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <menuitem id="report_main_menu"
+              parent="hr_hospital_menu_root"
+              name="Report menu"
+              sequence="10"/>
+
+    <menuitem id="hospital_disease_analytic_report_menu"
+              name="Disease analytic report"
+              parent="report_main_menu"
+              action="hospital_disease_analytic_report_server_action"
+              sequence="10"/>
+
+</odoo>

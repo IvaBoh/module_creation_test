@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
 
@@ -25,4 +25,13 @@ class HospitalPhysician(models.Model):
     @api.constrains("mentor_id")
     def _check_mentor_id(self):
         if self.mentor_id and self.mentor_id.intern:
-            raise ValidationError("You can't choose an intern as a mentor.")
+            raise ValidationError(_("You can't choose an intern as a mentor."))
+
+    def name_get(self):
+        list_of_names = []
+        for record in self:
+            if record.intern:
+                list_of_names.append((record.id, f"{record.name} | Intern "))
+            else:
+                list_of_names.append((record.id, record.name))
+        return list_of_names
