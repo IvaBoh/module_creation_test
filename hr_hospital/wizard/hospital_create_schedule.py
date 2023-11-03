@@ -1,4 +1,5 @@
-import calendar, datetime
+import calendar
+import datetime
 from odoo import api, fields, models
 
 

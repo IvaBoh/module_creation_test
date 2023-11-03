@@ -26,7 +26,7 @@
         <field name="name">hospital.patient.visit.multi.tree</field>
         <field name="model">hospital.patient.visit.multi</field>
         <field name="arch" type="xml">
-            <tree string="Patient visit">
+            <tree>
                 <field name="visit_date"/>
                 <field name="treatment"/>
                 <field name="active"/>

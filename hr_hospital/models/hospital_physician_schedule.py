@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
 
@@ -32,8 +32,10 @@ class HospitalPhysicianSchedule(models.Model):
                 and self.physician_id.id == record.get("physician_id")[0]
             ):
                 raise ValidationError(
-                    "Selected physician appointment time "
-                    "has already been occupied"
+                    _(
+                        "Selected physician appointment time "
+                        "has already been occupied"
+                    )
                 )
 
     def name_get(self):

@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
 
@@ -13,13 +13,11 @@ class HospitalVisitReschedule(models.TransientModel):
             ("visit_date", ">", fields.Datetime.now()),
         ],
         required=True,
-        string="Your planed visit to change",
     )
     appointment_id = fields.Many2one(
         comodel_name="hospital.physician.schedule",
         domain=[("visit_date", ">", fields.Datetime.now())],
         required=True,
-        string="New appointment to the same physician",
     )
 
     @api.constrains("visit_id", "appointment_id")
@@ -29,7 +27,9 @@ class HospitalVisitReschedule(models.TransientModel):
                 record.visit_id.physician_id.id
                 is not record.appointment_id.physician_id.id
             ):
-                raise ValidationError("Select appointment with you physician.")
+                raise ValidationError(
+                    _("Select appointment with you physician.")
+                )
 
     @api.model
     def action_open_wizard(self):

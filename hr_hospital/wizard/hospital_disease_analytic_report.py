@@ -2,7 +2,7 @@ import calendar
 from datetime import datetime, timedelta
 from re import match
 
-from odoo import api, fields, models
+from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
 
 
@@ -28,7 +28,7 @@ class HospitalDiseaseAnalyticReport(models.TransientModel):
     def _check_year_format(self):
         for record in self:
             if record.year and not match(r"^\d{4}$", record.year):
-                raise ValidationError("Year format must be 4 digits.")
+                raise ValidationError(_("Year format must be 4 digits."))
 
     def action_open_wizard(self):
         diagnoses = self.env["hospital.diagnosis"].search([])

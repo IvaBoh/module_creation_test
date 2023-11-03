@@ -17,6 +17,7 @@ class HospitalDiseaseData(models.TransientModel):
 
     @api.model
     def create(self, values):
+        record_to_return = None
         existing_record = self.env["hospital.disease.data"].search(
             [
                 ("case_date", "=", values.get("case_date")),
@@ -25,9 +26,10 @@ class HospitalDiseaseData(models.TransientModel):
             ]
         )
 
-        if not existing_record:
-            print("not exist")
-            new_record = super().create(values)
-            return new_record
+        if existing_record:
+            record_to_return = existing_record
         else:
-            return existing_record
+            new_record = super().create(values)
+            record_to_return = new_record
+
+        return record_to_return

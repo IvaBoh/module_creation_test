@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError, UserError
 
 
@@ -43,19 +43,21 @@ class HospitalPatientVisitMulti(models.Model):
         if not old_visit_value:
             if date_new < fields.Datetime.now():
                 raise ValidationError(
-                    "Select future visit date that is today or later"
+                    _("Select future visit date that is today or later")
                 )
 
         if old_visit_value and date_old < fields.Datetime.now():
-            raise ValidationError("You can't change expired visit.")
+            raise ValidationError(_("You can't change expired visit."))
 
     @api.constrains("physician_id", "visit_id")
     def _check_physician(self):
         for record in self:
             if record.physician_id.id is not record.visit_id.physician_id.id:
                 raise ValidationError(
-                    "You try to make appointment to the physician "
-                    "that is not your assigned physician."
+                    _(
+                        "You try to make appointment to the physician "
+                        "that is not your assigned physician."
+                    )
                 )
 
     @api.constrains("active", "diagnosis_id")
@@ -63,7 +65,7 @@ class HospitalPatientVisitMulti(models.Model):
         for record in self:
             if record.diagnosis_id and record.active is False:
                 raise ValidationError(
-                    "You can't archive record with diagnosis."
+                    _("You can't archive record with diagnosis.")
                 )
 
     @api.constrains("visit_id")
@@ -77,16 +79,20 @@ class HospitalPatientVisitMulti(models.Model):
 
         if self.visit_id in patient_visits:
             raise ValidationError(
-                "Selected physician appointment time "
-                "has already been occupied"
+                _(
+                    "Selected physician appointment time "
+                    "has already been occupied"
+                )
             )
 
     def unlink(self):
         for visit in self:
             if visit.diagnosis_id:
                 raise UserError(
-                    "Deletion not allowed due to the existence of the "
-                    "diagnosis."
+                    _(
+                        "Deletion not allowed due to the existence of the "
+                        "diagnosis."
+                    )
                 )
         return super(HospitalPatientVisitMulti, self).unlink()
 
@@ -95,7 +101,8 @@ class HospitalPatientVisitMulti(models.Model):
             (
                 record.id,
                 f"{record.patient_id.name} has a visit "
-                f"on {record.visit_id.visit_date} at {record.visit_id.hour}:00 "
+                f"on {record.visit_id.visit_date} "
+                f"at {record.visit_id.hour}:00 "
                 f"to {record.physician_id.name}",
             )
             for record in self

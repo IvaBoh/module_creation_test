@@ -24,7 +24,7 @@
         <field name="name">hospital.physician.assign.history.tree</field>
         <field name="model">hospital.physician.assign.history</field>
         <field name="arch" type="xml">
-            <tree string="Assignment change history of a physician">
+            <tree>
                 <field name="assignment_date"/>
                 <field name="patient_id"/>
                 <field name="physician_id"/>
