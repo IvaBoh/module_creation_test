@@ -21,7 +21,6 @@
         </field>
     </record>
 
-
     <record id="hospital_disease_analytic_report_server_action"
             model="ir.actions.server">
         <field name="name">Disease analytic report</field>

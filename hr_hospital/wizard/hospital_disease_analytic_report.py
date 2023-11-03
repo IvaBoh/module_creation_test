@@ -23,9 +23,6 @@ class HospitalDiseaseAnalyticReport(models.TransientModel):
         default="11",
         required=True,
     )
-    # record_ids = fields.Many2many(
-    #     comodel_name="hospital.disease.data", string="Data records"
-    # )
 
     @api.constrains("year")
     def _check_year_format(self):
@@ -44,8 +41,6 @@ class HospitalDiseaseAnalyticReport(models.TransientModel):
                     "diagnose_id": record.id,
                 }
             )
-
-        # self.env["hospital.disease.data"].search([]).unlink()
 
         return {
             "name": "Create report for disease data",
@@ -79,9 +74,12 @@ class HospitalDiseaseAnalyticReport(models.TransientModel):
 
         result = {}
         for record in records_by_date:
-            name = record.disease_id.name
-            if name in result:
-                result[name] += 1
+            disease_name = record.disease_id.name
+            if disease_name in result:
+                result[disease_name] += 1
             else:
-                result[name] = 1
-        return result
+                result[disease_name] = 1
+
+        # return self.env.ref(
+        #     "hospital.disease_count_report_action"
+        # ).action.report_action(self, data=result)

@@ -4,5 +4,4 @@ from . import (
     hospital_create_schedule,
     hospital_disease_analytic_report,
     hospital_disease_data,
-    hospital_disease_count,
 )

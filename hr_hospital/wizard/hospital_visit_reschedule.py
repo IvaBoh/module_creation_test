@@ -44,5 +44,3 @@ class HospitalVisitReschedule(models.TransientModel):
     def action_reschedule(self):
         for record in self:
             record.visit_id.write({"visit_id": record.appointment_id.id})
-            print(record.visit_id.visit_date)
-            print(record.appointment_id.visit_date)

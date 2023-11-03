@@ -8,11 +8,20 @@
             <form string="Create schedule">
                 <sheet>
                     <group>
+                        <field name="year"/>
+                        <field name="month"/>
+                        <field name="week"/>
+                        <field name="physician_id"/>
+                        <field name="monday"/>
+                        <field name="tuesday"/>
+                        <field name="wednesday"/>
+                        <field name="thursday"/>
+                        <field name="friday"/>
                     </group>
                 </sheet>
                 <footer>
                     <button name="action_create_schedule"
-                            string="Reassign"
+                            string="Create schedule"
                             type="object"
                             class="btn-primary"/>
                     <button special="cancel" class="oe_link" string="Close"/>
@@ -30,15 +39,15 @@
         <field name="binding_type">action</field>
     </record>
 
-    <menuitem id="visit_menu"
+    <menuitem id="schedule_menu"
               parent="hr_hospital_menu_root"
-              name="Visit menu"
+              name="Schedule menu"
               sequence="10"/>
 
-    <menuitem id="visit_reschedule_menu"
-              name="Visit reschedule"
+    <menuitem id="create_schedule_menu"
+              name="Create schedule"
               action="hospital_create_schedule_action"
-              parent="visit_menu"
+              parent="schedule_menu"
               sequence="10"/>
 
 </odoo>
