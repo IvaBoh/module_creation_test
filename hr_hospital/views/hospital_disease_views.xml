@@ -6,11 +6,16 @@
         <field name="model">hospital.disease</field>
         <field name="arch" type="xml">
             <form>
-                <field name="name"/>
-                <field name="description"/>
-                <field name="symptoms"/>
-                <field name="treatment"/>
-                <field name="mortality"/>
+                <sheet>
+                    <group name="disease" string="Disease Information">
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="symptoms"/>
+                        <field name="treatment"/>
+                        <field name="mortality"/>
+                        <field name="parent_id"/>
+                    </group>
+                </sheet>
             </form>
         </field>
     </record>
@@ -27,6 +32,19 @@
                 <field name="treatment"/>
                 <field name="mortality"/>
             </tree>
+        </field>
+    </record>
+
+    <record id="hospital_disease_view_search" model="ir.ui.view">
+        <field name="name">hospital.disease.view.search</field>
+        <field name="model">hospital.disease</field>
+        <field name="arch" type="xml">
+            <search>
+                <searchpanel view_types="tree">
+                    <field name="parent_id" hierarchize="1"
+                           enable_counters="1"/>
+                </searchpanel>
+            </search>
         </field>
     </record>
 
