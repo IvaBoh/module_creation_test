@@ -46,6 +46,8 @@
                                        ]"/>
                 <filter name="groupby_sample" string="Sample type"
                         context="{'group_by': 'sample'}"/>
+                <filter name="filter_analysis_date" date="analysis_date"
+                        string="Analysis Date" default_period="this_month"/>
             </search>
         </field>
     </record>
@@ -59,7 +61,6 @@
                        string="Physician"
                        type="row"/>
                 <field name="sample" type="col"/>
-                <field name="analysis_date" interval="month" type="col"/>
             </pivot>
         </field>
     </record>
@@ -68,6 +69,10 @@
         <field name="name">Analyses</field>
         <field name="res_model">hospital.analysis</field>
         <field name="view_mode">tree,form,pivot</field>
+        <field name="context">{
+            'search_default_filter_analysis_date': 2,
+            }
+        </field>
     </record>
 
     <menuitem id="analysis_menu"
