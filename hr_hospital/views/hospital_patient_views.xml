@@ -32,6 +32,8 @@
 
                     <group name="patient" string="Patient Information">
                         <field name="name"/>
+                        <field name="phone"/>
+                        <field name="email"/>
                         <field name="birthday_date"/>
                         <field name="age"/>
                         <field name="passport"/>

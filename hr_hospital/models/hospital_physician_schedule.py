@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
@@ -15,6 +17,37 @@ class HospitalPhysicianSchedule(models.Model):
         comodel_name="hospital.physician",
         required=False,
     )
+    start_date = fields.Datetime(
+        compute="_compute_start_datetime", store=True, readonly=True
+    )
+    stop_date = fields.Datetime(
+        compute="_compute_stop_datetime", store=True, readonly=True
+    )
+
+    @api.depends("visit_date", "hour")
+    def _compute_start_datetime(self):
+        for record in self:
+            if record.visit_date and record.hour:
+                combined_datetime_str = (
+                    f"{record.visit_date} {int(record.hour):02d}:00:00"
+                )
+                record.start_date = fields.Datetime.from_string(
+                    combined_datetime_str
+                )
+            else:
+                record.start_date = False
+
+    @api.depends("start_date")
+    def _compute_stop_datetime(self):
+        for record in self:
+            if record.start_date:
+                combined_datetime = fields.Datetime.from_string(
+                    record.start_date
+                )
+                stop_datetime = combined_datetime + timedelta(minutes=50)
+                record.stop_date = stop_datetime.strftime("%Y-%m-%d %H:%M:%S")
+            else:
+                record.stop_date = False
 
     @api.constrains("visit_date", "hour", "physician_id")
     def _check_visit_date(self):

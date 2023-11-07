@@ -17,11 +17,16 @@ class HospitalDisease(models.Model):
         store=True,
     )
     parent_id = fields.Many2one(
-        "hospital.disease", "Parent Category", index=True, ondelete="cascade"
+        comodel_name="hospital.disease",
+        string="Parent Category",
+        index=True,
+        required=False,
     )
     parent_path = fields.Char(index=True)
     child_id = fields.One2many(
-        "hospital.disease", "parent_id", "Child Categories"
+        comodel_name="hospital.disease",
+        inverse_name="parent_id",
+        string="Child Categories",
     )
     description = fields.Char(required=False)
     symptoms = fields.Char(required=False)

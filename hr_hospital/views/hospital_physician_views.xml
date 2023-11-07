@@ -53,7 +53,7 @@
             </tree>
         </field>
     </record>
-    
+
     <record id="hospital_physician_view_kanban" model="ir.ui.view">
         <field name="name">hospital.physician.view.kanban</field>
         <field name="model">hospital.physician</field>
@@ -83,11 +83,24 @@
                                 Create visit
                             </button>
                         </div>
-
                     </t>
                 </templates>
-
             </kanban>
+        </field>
+    </record>
+
+    <record id="hospital_physician_view_search" model="ir.ui.view">
+        <field name="name">hospital.physician.view.search</field>
+        <field name="model">hospital.physician</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter name="mentor_id" string="Mentors"
+                        domain="[('intern','=',False)]"/>
+                <filter name="intern" string="Interns"
+                        domain="[('intern','=',True)]"/>
+                <filter name="patient_ids" string="No patients"
+                        domain="[('patient_ids','=',False)]"/>
+            </search>
         </field>
     </record>
 

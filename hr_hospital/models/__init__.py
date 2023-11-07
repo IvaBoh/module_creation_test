@@ -8,4 +8,5 @@ from . import (
     hospital_diagnosіs,
     hospital_physician_assign_history,
     hospital_physician_schedule,
+    hospital_analysis,
 )

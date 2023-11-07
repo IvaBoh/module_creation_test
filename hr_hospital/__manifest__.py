@@ -18,6 +18,7 @@
         "views/hospital_physician_assign_history_views.xml",
         "views/hospital_physician_schedule_views.xml",
         "views/hospital_diagnosis_views.xml",
+        "views/hospital_analysis_views.xml",
         "wizard/hospital_physician_reassignment_views.xml",
         "wizard/hospital_visit_reschedule_views.xml",
         "wizard/hospital_create_schedule_views.xml",
