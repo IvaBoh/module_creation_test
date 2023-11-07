@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hospital_analysis_view_form" model="ir.ui.view">
+        <field name="name">hospital.analysis.view.form</field>
+        <field name="model">hospital.analysis</field>
+        <field name="arch" type="xml">
+            <form string="Analysis info">
+                <sheet>
+                    <group name="Analysis"
+                           string="Analysis info">
+                        <field name="title"/>
+                        <field name="sample"/>
+                        <field name="patient_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hospital_analysis_view_tree" model="ir.ui.view">
+        <field name="name">hospital.analysis.view.tree</field>
+        <field name="model">hospital.analysis</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="title"/>
+                <field name="sample"/>
+                <field name="patient_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hospital_analysis_view_search" model="ir.ui.view">
+        <field name="name">hospital.analysis.view.search</field>
+        <field name="model">hospital.analysis</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="patient_id"
+                       string="Search by patient name and phone"
+                       filter_domain="[
+                                        '|',
+                                        ('patient_id.name','ilike',self),
+                                        ('patient_id.phone','ilike',self)
+                                       ]"/>
+                <filter name="groupby_sample" string="Sample type"
+                        context="{'group_by': 'sample'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="hospital_analysis_action" model="ir.actions.act_window">
+        <field name="name">Analyses</field>
+        <field name="res_model">hospital.analysis</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="analysis_menu"
+              name="Analyses"
+              parent="hospital_main_menu"
+              action="hospital_analysis_action"
+              sequence="120"/>
+
+</odoo>

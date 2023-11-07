@@ -6,6 +6,7 @@ class HospitalAnalysis(models.Model):
     _name = "hospital.analysis"
     _description = "Patient analysis card"
 
+    title = fields.Char()
     sample = fields.Selection(
         selection=[
             ("blood", "Blood"),
@@ -18,3 +19,12 @@ class HospitalAnalysis(models.Model):
         comodel_name="hospital.patient",
         required=False,
     )
+
+    def name_get(self):
+        return [
+            (
+                record.id,
+                (record.title),
+            )
+            for record in self
+        ]
