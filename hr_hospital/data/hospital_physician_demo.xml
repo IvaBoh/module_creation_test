@@ -3,14 +3,41 @@
 
     <record id="physician_1" model="hospital.physician" forcecreate="True">
         <field name="name">John Karter</field>
+        <field name="phone">+380991114444</field>
+        <field name="email">jonh@mail.com</field>
+        <field name="photo" type="base64"
+               file="base/static/img/physician_avatar.jpg"/>
+        <field name="gender">male</field>
+        <field name="speciality">surgeon</field>
+        <field name="intern" eval="True"/>
+        <field name="mentor_id" ref="physician_2"/>
+        <field name="patient_ids"/>
     </record>
 
     <record id="physician_2" model="hospital.physician" forcecreate="True">
         <field name="name">Bill Murey</field>
+        <field name="phone">+380991114444</field>
+        <field name="email">bill@mail.com</field>
+        <field name="photo" type="base64"
+               file="base/static/img/physician_avatar.jpg"/>
+        <field name="gender">male</field>
+        <field name="speciality">therapist</field>
+        <field name="intern" eval="False"/>
+        <field name="mentor_id"/>
+        <field name="patient_ids"/>
     </record>
 
     <record id="physician_3" model="hospital.physician" forcecreate="True">
         <field name="name">Alice Wonderland</field>
+        <field name="phone">+380991114444</field>
+        <field name="email">alice@mail.com</field>
+        <field name="photo" type="base64"
+               file="base/static/img/physician_avatar.jpg"/>
+        <field name="gender">female</field>
+        <field name="speciality">ophthalmologist</field>
+        <field name="intern" eval="True"/>
+        <field name="mentor_id" ref="physician_2"/>
+        <field name="patient_ids"/>
     </record>
 
 </odoo>

@@ -7,6 +7,29 @@
         <field name="arch" type="xml">
             <form string="Patient">
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button type="object"
+                                name="action_visit_history">
+                            <div>
+                                <span>Visit history</span>
+                            </div>
+                        </button>
+                        <button type="object"
+                                name="action_assignment_history">
+                            <div>
+                                <span>History of physician</span>
+                            </div>
+                        </button>
+                        <button type="object"
+                                name="action_create_visit"
+                                class="oe_highlight"
+                                target="new">
+                            <div>
+                                <span>Create visit</span>
+                            </div>
+                        </button>
+                    </div>
+
                     <group name="patient" string="Patient Information">
                         <field name="name"/>
                         <field name="birthday_date"/>
@@ -14,6 +37,16 @@
                         <field name="passport"/>
                         <field name="physician_id"/>
                     </group>
+                    <notebook>
+                        <page string="Physician assignment history">
+                            <field name="physician_history_ids"/>
+                        </page>
+                        <page string="Patient disease history">
+                            <group>
+                                <field name="diagnosis_ids"/>
+                            </group>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>

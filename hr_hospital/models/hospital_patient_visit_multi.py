@@ -57,6 +57,7 @@ class HospitalPatientVisitMulti(models.Model):
                     _(
                         "You try to make appointment to the physician "
                         "that is not your assigned physician."
+                        "You should select visit."
                     )
                 )
 

@@ -1,7 +1,7 @@
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 
 
 class HospitalPatient(models.Model):
@@ -29,6 +29,14 @@ class HospitalPatient(models.Model):
         comodel_name="hospital.contact.person",
         inverse_name="patient_id",
         required=False,
+    )
+    physician_history_ids = fields.One2many(
+        comodel_name="hospital.physician.assign.history",
+        inverse_name="patient_id",
+    )
+    diagnosis_ids = fields.One2many(
+        comodel_name="hospital.diagnosis",
+        inverse_name="patient_id",
     )
 
     @api.depends("age", "birthday_date")
@@ -64,3 +72,37 @@ class HospitalPatient(models.Model):
                     }
                 )
             return res
+
+    def action_visit_history(self):
+        self.ensure_one()
+        return {
+            "name": _("Patient visits"),
+            "view_mode": "tree",
+            "res_model": "hospital.patient.visit.multi",
+            "type": "ir.actions.act_window",
+            "target": "current",
+        }
+
+    def action_assignment_history(self):
+        self.ensure_one()
+        return {
+            "name": _("Physician assignment history"),
+            "view_mode": "tree,form",
+            "res_model": "hospital.physician.assign.history",
+            "type": "ir.actions.act_window",
+            "target": "current",
+        }
+
+    def action_create_visit(self):
+        self.ensure_one()
+        return {
+            "name": _("Create visit from patient form view"),
+            "res_model": "hospital.patient.visit.multi",
+            "type": "ir.actions.act_window",
+            "view_mode": "form",
+            "target": "new",
+            "context": {
+                "default_physician_id": self.physician_id.id,
+                "default_patient_id": self.id,
+            },
+        }
