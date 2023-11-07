@@ -21,6 +21,12 @@ class HospitalPhysician(models.Model):
         string="Mentor physician",
         required=False,
     )
+    intern_ids = fields.One2many(
+        comodel_name="hospital.physician",
+        string="Physician interns",
+        required=False,
+        inverse_name="mentor_id",
+    )
 
     @api.constrains("mentor_id")
     def _check_mentor_id(self):
@@ -35,3 +41,14 @@ class HospitalPhysician(models.Model):
             else:
                 list_of_names.append((record.id, record.name))
         return list_of_names
+
+    def action_physician_create_visit(self):
+        self.ensure_one()
+        return {
+            "name": _("Create visit from physician kanban view"),
+            "res_model": "hospital.patient.visit.multi",
+            "type": "ir.actions.act_window",
+            "view_mode": "form",
+            "target": "new",
+            "context": {"default_physician_id": self.id},
+        }

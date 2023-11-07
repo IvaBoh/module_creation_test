@@ -80,6 +80,5 @@ class HospitalDiseaseAnalyticReport(models.TransientModel):
             else:
                 result[disease_name] = 1
 
-        # return self.env.ref(
-        #     "hospital.disease_count_report_action"
-        # ).action.report_action(self, data=result)
+        report = self.env.ref("hr_hospital.disease_count_report_action")
+        return report.report_action(records_by_date, {})
