@@ -53,7 +53,7 @@
             </tree>
         </field>
     </record>
-    
+
     <record id="hospital_physician_view_kanban" model="ir.ui.view">
         <field name="name">hospital.physician.view.kanban</field>
         <field name="model">hospital.physician</field>
@@ -83,10 +83,8 @@
                                 Create visit
                             </button>
                         </div>
-
                     </t>
                 </templates>
-
             </kanban>
         </field>
     </record>

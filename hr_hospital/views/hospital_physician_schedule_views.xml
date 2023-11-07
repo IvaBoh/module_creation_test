@@ -13,6 +13,8 @@
                         <field name="visit_date"/>
                         <field name="hour"/>
                         <field name="physician_id"/>
+                        <field name="start_date"/>
+                        <field name="stop_date"/>
                     </group>
                 </sheet>
             </form>
@@ -32,11 +34,22 @@
         </field>
     </record>
 
+    <record id="hospital_physician_schedule_view_calendar" model="ir.ui.view">
+        <field name="name">hospital.physician.schedule.view.calendar</field>
+        <field name="model">hospital.physician.schedule</field>
+        <field eval="2" name="priority"/>
+        <field name="arch" type="xml">
+            <calendar date_start="start_date" date_stop="stop_date"
+                      string="Schedule" mode="week">
+            </calendar>
+        </field>
+    </record>
+
     <record id="hospital_physician_schedule_action"
             model="ir.actions.act_window">
         <field name="name">Physician schedule</field>
         <field name="res_model">hospital.physician.schedule</field>
-        <field name='view_mode'>tree,form</field>
+        <field name='view_mode'>tree,form,calendar</field>
     </record>
 
     <menuitem id="schedule_physician_menu"
