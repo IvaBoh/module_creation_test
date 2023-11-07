@@ -35,10 +35,22 @@
         </field>
     </record>
 
+    <record id="hospital_diagnosis_view_pivot" model="ir.ui.view">
+        <field name="name">hospital.diagnosis.view.pivot</field>
+        <field name="model">hospital.diagnosis</field>
+        <field name="arch" type="xml">
+            <pivot display_quantity="1">
+                <field name="disease_id" type="row"/>
+                <field name="case_date" type="col" interval="year"/>
+                <field name="case_date" type="col" interval="month"/>
+            </pivot>
+        </field>
+    </record>
+
     <record id="hospital_diagnosis_action" model="ir.actions.act_window">
         <field name="name">Diagnoses</field>
         <field name="res_model">hospital.diagnosis</field>
-        <field name='view_mode'>tree,form</field>
+        <field name='view_mode'>tree,form,pivot</field>
     </record>
 
     <menuitem id="diagnosis_menu"

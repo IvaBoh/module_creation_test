@@ -80,6 +80,3 @@ class HospitalPhysicianSchedule(models.Model):
             )
             for record in self
         ]
-
-
-# some commit
