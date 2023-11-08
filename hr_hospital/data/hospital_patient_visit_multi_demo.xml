@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="visit_1" model="hospital.patient.visit.multi"
+            forcecreate="True">
+        <field name="visit_id" ref="schedule_1"/>
+        <field name="diagnosis_id" ref="diagnosis_1"/>
+        <field name="physician_id" ref="physician_2"/>
+        <field name="patient_id" ref="patient_1"/>
+    </record>
+
+    <record id="visit_2" model="hospital.patient.visit.multi"
+            forcecreate="True">
+        <field name="visit_id" ref="schedule_2"/>
+        <field name="diagnosis_id" ref="diagnosis_1"/>
+        <field name="physician_id" ref="physician_2"/>
+        <field name="patient_id" ref="patient_1"/>
+    </record>
+
+    <record id="visit_3" model="hospital.patient.visit.multi"
+            forcecreate="True">
+        <field name="visit_id" ref="schedule_4"/>
+        <field name="diagnosis_id" ref="diagnosis_2"/>
+        <field name="physician_id" ref="physician_1"/>
+        <field name="patient_id" ref="patient_1"/>
+    </record>
+
+</odoo>

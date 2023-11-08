@@ -19,7 +19,7 @@ class HospitalPatient(models.Model):
         string="Date of Birth",
         required=True,
     )
-    passport = fields.Char()
+    passport = fields.Char(required=False)
     physician_id = fields.Many2one(
         comodel_name="hospital.physician",
         string="Attending physician",
@@ -33,10 +33,12 @@ class HospitalPatient(models.Model):
     physician_history_ids = fields.One2many(
         comodel_name="hospital.physician.assign.history",
         inverse_name="patient_id",
+        required=False,
     )
     diagnosis_ids = fields.One2many(
         comodel_name="hospital.diagnosis",
         inverse_name="patient_id",
+        required=False,
     )
 
     @api.depends("age", "birthday_date")

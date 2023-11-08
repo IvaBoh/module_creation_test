@@ -3,20 +3,35 @@
 
     <record id="patient_1" model="hospital.patient" forcecreate="True">
         <field name="name">Kristofer Nolan</field>
-        <field name="birthday_date" eval="datetime(2020, 5, 17)"/>
+        <field name="birthday_date">2000-10-17</field>
         <field name="passport">None</field>
+        <field name="phone">+380991114444</field>
+        <field name="email">nolan@mail.com</field>
+        <field name="photo" type="base64"
+               file="hr_hospital/static/img/physician_avatar.jpg"/>
+        <field name="gender">male</field>
     </record>
 
     <record id="patient_2" model="hospital.patient" forcecreate="True">
         <field name="name">Neill Blomkamp</field>
-        <field name="birthday_date" eval="datetime(2020, 5, 17)"/>
+        <field name="birthday_date">2001-10-17</field>
         <field name="passport">None</field>
+        <field name="phone">+380991114444</field>
+        <field name="email">neill@mail.com</field>
+        <field name="photo" type="base64"
+               file="hr_hospital/static/img/physician_avatar.jpg"/>
+        <field name="gender">male</field>
     </record>
 
     <record id="patient_3" model="hospital.patient" forcecreate="True">
         <field name="name">Martin Scorsese</field>
-        <field name="birthday_date" eval="datetime(2020, 5, 17)"/>
+        <field name="birthday_date">2002-10-17</field>
         <field name="passport">None</field>
+        <field name="phone">+380991114444</field>
+        <field name="email">martin@mail.com</field>
+        <field name="photo" type="base64"
+               file="hr_hospital/static/img/physician_avatar.jpg"/>
+        <field name="gender">male</field>
     </record>
 
 </odoo>

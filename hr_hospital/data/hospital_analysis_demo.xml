@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="analysis_1" model="hospital.analysis"
+            forcecreate="True">
+        <field name="analysis_date">2023-11-08</field>
+        <field name="sample">bone</field>
+        <field name="title">Some analysis</field>
+        <field name="patient_id" ref="patient_1"/>
+    </record>
+
+    <record id="analysis_2" model="hospital.analysis"
+            forcecreate="True">
+        <field name="analysis_date">2023-11-09</field>
+        <field name="sample">CSF</field>
+        <field name="title">Some analysis</field>
+        <field name="patient_id" ref="patient_1"/>
+    </record>
+
+    <record id="analysis_3" model="hospital.analysis"
+            forcecreate="True">
+        <field name="analysis_date">2023-12-08</field>
+        <field name="sample">blood</field>
+        <field name="title">Some analysis</field>
+        <field name="patient_id" ref="patient_1"/>
+    </record>
+
+
+</odoo>

@@ -10,7 +10,7 @@ class HospitalPhysicianSchedule(models.Model):
 
     visit_date = fields.Date(required=False, default=fields.Date.context_today)
     hour = fields.Selection(
-        [(str(hour), f"{hour:02d}.00") for hour in range(8, 19)],
+        [(str(hour), f"{hour:02d}:00") for hour in range(8, 19)],
         required=False,
     )
     physician_id = fields.Many2one(

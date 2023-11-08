@@ -7,7 +7,7 @@ class HospitalPhysician(models.Model):
     _description = "Physician basic info"
     _inherit = "hospital.abstract.person"
 
-    speciality = fields.Char()
+    speciality = fields.Char(required=False)
 
     patient_ids = fields.One2many(
         comodel_name="hospital.patient",
