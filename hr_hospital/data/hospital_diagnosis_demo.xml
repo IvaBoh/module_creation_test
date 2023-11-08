@@ -5,7 +5,9 @@
         <field name="case_date" eval="datetime(2019, 5, 17)"/>
         <field name="treatment">None</field>
         <field name="patient_id" ref="patient_1"/>
-        <field name="physician_id" ref="physician_1"/>
+        <field name="physician_id" ref="physician_2"/>
+        <field name="disease_id" ref="hospital_disease_1"/>
+        <field name="comment">Some mentor comment</field>
     </record>
 
     <record id="diagnosis_2" model="hospital.diagnosis" forcecreate="True">
@@ -13,13 +15,17 @@
         <field name="treatment">None</field>
         <field name="patient_id" ref="patient_1"/>
         <field name="physician_id" ref="physician_1"/>
+        <field name="disease_id" ref="hospital_disease_2"/>
+        <field name="comment">Some mentor comment</field>
     </record>
 
     <record id="diagnosis_3" model="hospital.diagnosis" forcecreate="True">
         <field name="case_date" eval="datetime(2017, 5, 17)"/>
         <field name="treatment">None</field>
-        <field name="patient_id" ref="patient_1"/>
-        <field name="physician_id" ref="physician_1"/>
+        <field name="patient_id" ref="patient_3"/>
+        <field name="physician_id" ref="physician_3"/>
+        <field name="disease_id" ref="hospital_disease_3"/>
+        <field name="comment">Some mentor comment</field>
     </record>
 
 </odoo>

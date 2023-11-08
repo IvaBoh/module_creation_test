@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="schedule_1" model="hospital.physician.schedule"
+            forcecreate="True">
+        <field name="visit_date">2023-11-01</field>
+        <field name="hour">9</field>
+        <field name="physician_id" ref="physician_2"/>
+    </record>
+
+    <record id="schedule_2" model="hospital.physician.schedule"
+            forcecreate="True">
+        <field name="visit_date">2023-11-01</field>
+        <field name="hour">10</field>
+        <field name="physician_id" ref="physician_2"/>
+    </record>
+
+    <record id="schedule_3" model="hospital.physician.schedule"
+            forcecreate="True">
+        <field name="visit_date">2023-11-01</field>
+        <field name="hour">11</field>
+        <field name="physician_id" ref="physician_2"/>
+    </record>
+
+    <record id="schedule_4" model="hospital.physician.schedule"
+            forcecreate="True">
+        <field name="visit_date">2023-11-16</field>
+        <field name="hour">9</field>
+        <field name="physician_id" ref="physician_1"/>
+    </record>
+
+    <record id="schedule_5" model="hospital.physician.schedule"
+            forcecreate="True">
+        <field name="visit_date">2023-11-16</field>
+        <field name="hour">10</field>
+        <field name="physician_id" ref="physician_1"/>
+    </record>
+
+</odoo>
