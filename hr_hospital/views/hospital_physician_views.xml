@@ -62,19 +62,33 @@
                     quick_create_view="hospital_physician_view_form">
                 <templates>
                     <t t-name="kanban-box">
-                        <div>
+                        <div class="oe_kanban_global_click">
+                            <div class="o_dropdown_kanban dropdown">
+                                <a role="button"
+                                   class="dropdown-toggle o-no-caret btn"
+                                   data-toggle="dropdown" href="#"
+                                   aria-label="Dropdown menu"
+                                   title="Dropdown menu">
+                                    <span class="fa fa-ellipsis-v"/>
+                                </a>
+                                <div class="dropdown-menu" role="menu">
+                                    <t t-if="widget.editable">
+                                        <a role="menuitem" type="edit"
+                                           class="dropdown-item">Edit
+                                        </a>
+                                    </t>
+                                    <t t-if="widget.deletable">
+                                        <a role="menuitem" type="delete"
+                                           class="dropdown-item">Delete
+                                        </a>
+                                    </t>
+                                </div>
+                            </div>
                             <field name="name"/>
-                        </div>
-                        <div>
+                            |
                             <field name="speciality"/>
-                        </div>
-                        <div>
-                            <field name="gender"/>
-                        </div>
-                        <div>
-                            <field name="phone"/>
-                        </div>
-                        <div>
+                            <br/>
+                            <br/>
                             <button
                                     name="action_physician_create_visit"
                                     type="object"
@@ -82,6 +96,21 @@
                             >
                                 Create visit
                             </button>
+                            <!--                            Відображається-->
+                            <!--                            <p>-->
+                            <!--                                <t t-out="record.name.raw_value"/>-->
+                            <!--                            </p>-->
+                            <!--                            Не відображається-->
+                            <!--                            <t t-field="physician.name"/>-->
+                            <!--                            <t for-each="record.patient_ids"-->
+                            <!--                               t-as="item">-->
+                            <!--                                <p>-->
+                            <!--                                    <t t-out="item.name"/>-->
+                            <!--                                </p>-->
+                            <!--                            </t>-->
+
+                            <!--                            <field name="patient_ids" widget="kanban_address"/>-->
+                            <!--                            <field name="patient_ids_html" widget="html"/>-->
                         </div>
                     </t>
                 </templates>
