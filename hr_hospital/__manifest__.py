@@ -23,8 +23,10 @@
         "wizard/hospital_visit_reschedule_views.xml",
         "wizard/hospital_create_schedule_views.xml",
         "wizard/hospital_disease_analytic_report_views.xml",
+        "report/report_disease_count.xml",
         "report/report.xml",
-        "report/disease_count.xml",
+        "report/physician_templates.xml",
+        "report/physician_reports.xml",
     ],
     "demo": [
         "data/hospital_disease_demo.xml",

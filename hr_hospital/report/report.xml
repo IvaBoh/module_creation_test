@@ -5,8 +5,8 @@
         <field name="name">Disease counts</field>
         <field name="model">hospital.disease.analytic.report</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">hospital.report_disease_count</field>
-        <field name="report_file">hospital.report_disease_count</field>
+        <field name="report_name">hr_hospital.report_disease_count</field>
+        <field name="report_file">hr_hospital.report_disease_count</field>
         <field name="binding_model_id"
                ref="model_hospital_disease_analytic_report"/>
         <field name="binding_type">report</field>
