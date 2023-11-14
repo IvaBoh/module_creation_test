@@ -4,14 +4,67 @@
     <template id="hospital_physician_report_template">
         <t t-call="web.html_container">
             <t t-call="web.external_layout">
-                <t t-foreach="docs" t-as="obj">
+                <t t-foreach="docs" t-as="physician">
                     <div class="page">
-                        <h2>Report title</h2>
-                        <p>This object's name is
-                            <span t-field="obj.name"/>
-                        </p>
+                        <div style="display: flex; justify-content: flex-end;">
+                            <h2>Physician Info</h2>
+                            <p>This object's name is
+                                <span t-field="physician.name"/>
+                                <span t-field="physician.speciality"/>
+                            </p>
+                        </div>
+                        <p style="page-break-after:always;"/>
                     </div>
                 </t>
+            </t>
+        </t>
+    </template>
+
+    <template id="hospital_physician_report_template_custom">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="physician">
+                <div class="page m-0 p-0">
+                    <div class="d-flex flex-column">
+
+                        <div class="header row align-items-start">
+                            <div class="col-7">
+                                <br/>
+                            </div>
+                            <div class="col-5">
+                                <div class="text-right">
+                                    <img t-if="res_company.logo"
+                                         t-att-src="image_data_uri(res_company.logo)"
+                                         style="max-height: 45px;"
+                                         alt="Logo"/>
+                                </div>
+                                <div class="text-right">
+                                    <t t-raw="res_company.company_details"/>
+                                </div>
+                                <div class="text-right">
+                                    <p>Physician Name:
+                                        <t t-out="physician.name"/>
+                                    </p>
+                                </div>
+                                <div class="text-right">
+                                    <p>Physician Speciality:
+                                        <t t-out="physician.speciality"/>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="main row align-items-center">
+                            <p>Main</p>
+                        </div>
+
+                        <div class="footer row align-items-end">
+                            <p>Footer</p>
+                        </div>
+
+                    </div>
+
+                    <p style="page-break-after:always;"/>
+                </div>
             </t>
         </t>
     </template>
