@@ -1,6 +1,6 @@
 {
     "name": "Hospital Management",
-    "version": "15.0.2.2.0",
+    "version": "15.0.3.2.0",
     "category": "Services",
     "summary": """Odoo module to manage the basic processes of clinic""",
     "license": "LGPL-3",
