@@ -12,7 +12,7 @@ class HospitalDiseaseAnalyticReport(models.TransientModel):
 
     year = fields.Char(
         required=True,
-        default="2023",
+        default="2018",
     )
     month = fields.Selection(
         selection=[
@@ -20,7 +20,7 @@ class HospitalDiseaseAnalyticReport(models.TransientModel):
             for month, month_name in enumerate(calendar.month_abbr)
             if month
         ],
-        default="11",
+        default="5",
         required=True,
     )
 
@@ -80,5 +80,8 @@ class HospitalDiseaseAnalyticReport(models.TransientModel):
             else:
                 result[disease_name] = 1
 
+        data = {"data": result}
+
         report = self.env.ref("hr_hospital.disease_count_report_action")
-        return report.report_action(records_by_date, {})
+
+        return report.report_action(records_by_date, data=data)
