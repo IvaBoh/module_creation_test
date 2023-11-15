@@ -16,6 +16,7 @@
         <field name="description">Mieloma is a specific disease ...</field>
         <field name="treatment">Some medicine</field>
         <field name="symptoms">Mieloma symptoms</field>
+        <field name="severity">high</field>
     </record>
 
     <record id="hospital_disease_2" model="hospital.disease"
@@ -25,6 +26,7 @@
         <field name="description">Sarcoma is a specific disease ...</field>
         <field name="treatment">Some medicine</field>
         <field name="symptoms">Sarcoma symptoms</field>
+        <field name="severity">moderate</field>
     </record>
 
     <record id="hospital_disease_3" model="hospital.disease"
@@ -34,6 +36,7 @@
         <field name="description">Alzheimer's is a specific disease ...</field>
         <field name="treatment">Some medicine</field>
         <field name="symptoms">Alzheimer's Disease symptoms</field>
+        <field name="severity">low</field>
     </record>
 
 </odoo>
