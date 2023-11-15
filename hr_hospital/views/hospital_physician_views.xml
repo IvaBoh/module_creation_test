@@ -84,33 +84,23 @@
                                     </t>
                                 </div>
                             </div>
-                            <field name="name"/>
-                            |
-                            <field name="speciality"/>
-                            <br/>
-                            <br/>
-                            <button
-                                    name="action_physician_create_visit"
-                                    type="object"
-                                    class="oe_button"
-                            >
-                                Create visit
-                            </button>
-                            <!--                            Відображається-->
-                            <!--                            <p>-->
-                            <!--                                <t t-out="record.name.raw_value"/>-->
-                            <!--                            </p>-->
-                            <!--                            Не відображається-->
-                            <!--                            <t t-field="physician.name"/>-->
-                            <!--                            <t for-each="record.patient_ids"-->
-                            <!--                               t-as="item">-->
-                            <!--                                <p>-->
-                            <!--                                    <t t-out="item.name"/>-->
-                            <!--                                </p>-->
-                            <!--                            </t>-->
-
-                            <!--                            <field name="patient_ids" widget="kanban_address"/>-->
-                            <!--                            <field name="patient_ids_html" widget="html"/>-->
+                            <div style="height: 200px; width: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                                <p><field name="name"/>|
+                                    <field name="speciality"/>
+                                </p>
+                                <br/>
+                                <br/>
+                                <field name="patient_ids" widget="many2many_tags"/>
+                                <br/>
+                                <button
+                                        name="action_physician_create_visit"
+                                        type="object"
+                                        class="oe_button"
+                                        style="max-width: 120px"
+                                >
+                                    Create visit
+                                </button>
+                            </div>
                         </div>
                     </t>
                 </templates>

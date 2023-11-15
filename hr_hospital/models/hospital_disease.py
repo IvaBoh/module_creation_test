@@ -32,6 +32,15 @@ class HospitalDisease(models.Model):
     symptoms = fields.Char(required=False)
     treatment = fields.Char(required=False)
     mortality = fields.Float(required=False)
+    severity = fields.Selection(
+        selection=[
+            ("none", "None"),
+            ("low", "Low"),
+            ("moderate", "Moderate"),
+            ("high", "High"),
+        ],
+        defult="none",
+    )
 
     @api.depends("name", "parent_id.complete_name")
     def _compute_complete_name(self):

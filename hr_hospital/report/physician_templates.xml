@@ -4,12 +4,132 @@
     <template id="hospital_physician_report_template">
         <t t-call="web.html_container">
             <t t-call="web.external_layout">
-                <t t-foreach="docs" t-as="obj">
+                <t t-foreach="docs" t-as="physician">
                     <div class="page">
-                        <h2>Report title</h2>
-                        <p>This object's name is
-                            <span t-field="obj.name"/>
-                        </p>
+                        <div style="display: flex; justify-content: flex-end;">
+                            <h2>Physician Info</h2>
+                            <p>This object's name is
+                                <span t-field="physician.name"/>
+                                <span t-field="physician.speciality"/>
+                            </p>
+                        </div>
+                        <p style="page-break-after:always;"/>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <template id="hospital_physician_report_template_custom">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="physician">
+                <t t-call="web.basic_layout">
+                    <div class="page">
+                        <div class="wrapper" style="display: flex; flex-direction: column; min-height: 100%;">
+                            <div class="container-fluid">
+                                <div class="row d-flex justify-content-end">
+                                    <div class="col-6 text-right">
+                                        <img style="width: 200px" t-if="res_company.logo" t-att-src="image_data_uri(res_company.logo)" alt="Logo"/>
+                                    </div>
+                                </div>
+                                <div class="row d-flex justify-content-end">
+                                    <div class="col-6 text-right">
+                                        <t t-raw="res_company.company_details"/>
+                                    </div>
+                                </div>
+                                <div class="row d-flex justify-content-end pt-5">
+                                    <div class="col-5 text-right">
+                                        <p>Name:
+                                            <t t-out="physician.name"/>
+                                        </p>
+                                        <p>Speciality:
+                                            <t t-out="physician.speciality"/>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="activity pt-5">
+                                    <p class="h3 pb-5">Activity of this physician</p>
+                                    <p>Patient number:
+                                        <t t-esc="len(physician.patient_ids)"/>
+                                    </p>
+                                    <p>Diagnosis number:
+                                        <t t-esc="len(physician.diagnosis_ids)"/>
+                                    </p>
+                                    <t t-if="physician.intern">
+                                        <p>This physician is intern</p>
+                                    </t>
+                                    <t t-if="not physician.intern">
+                                        <p>Interns number:
+                                            <t t-esc="len(physician.intern_ids)"/>
+                                        </p>
+                                    </t>
+                                </div>
+                                <t t-if="physician.patient_ids">
+                                    <div class="patients">
+                                        <p class="h3 pb-5">Physician patient info</p>
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Age</th>
+                                                    <th scope="col">Gender</th>
+                                                    <th scope="col">Diagnoses</th>
+                                                    <th scope="col">Patient state</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <t t-foreach="physician.patient_ids" t-as="patient">
+                                                    <tr>
+                                                        <td>
+                                                            <t t-out="patient.name"/>
+                                                        </td>
+                                                        <td>
+                                                            <t t-out="patient.age"/>
+                                                        </td>
+                                                        <td>
+                                                            <t t-out="patient.gender"/>
+                                                        </td>
+                                                        <td>
+                                                            <t t-foreach="patient.diagnosis_ids" t-as="diagnosis">
+                                                                <p>
+                                                                    <t t-out="diagnosis.disease_id.name"/>
+                                                                </p>
+                                                            </t>
+                                                        </td>
+                                                        <t t-set="disease_states" t-value="patient.diagnosis_ids.filtered(lambda r: r.disease_id).mapped('disease_id.severity')"/>
+                                                        <t t-if="'high' in disease_states">
+                                                            <t t-set="state" t-value="'danger'"/>
+                                                        </t>
+                                                        <t t-if="'moderate' in disease_states and not 'high' in disease_states">
+                                                            <t t-set="state" t-value="'warning'"/>
+                                                        </t>
+                                                        <t t-if="not 'moderate' in disease_states and not 'high' in disease_states">
+                                                            <t t-set="state" t-value="'success'"/>
+                                                        </t>
+                                                        <td>
+                                                            <div class="p-4">
+                                                                <div t-attf-class="bg-{{ state }}" style="width: 100%; height: 100%;">State</div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </t>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </t>
+                                <t t-if="not physician.patient_ids">
+                                    <p class="h3 pb-5">This physician does not have any patients.</p>
+                                </t>
+                                <div class="time pt-5">
+                                    <p>Print at:
+                                        <t t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                                    </p>
+                                    <p>City:
+                                        <t t-out="res_company.city"/>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </t>
             </t>

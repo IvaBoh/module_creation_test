@@ -1,5 +1,3 @@
-import json
-
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
@@ -29,6 +27,12 @@ class HospitalPhysician(models.Model):
         required=False,
         inverse_name="mentor_id",
     )
+    diagnosis_ids = fields.One2many(
+        comodel_name="hospital.diagnosis",
+        string="Diagnoses",
+        required=False,
+        inverse_name="physician_id",
+    )
 
     @api.constrains("mentor_id")
     def _check_mentor_id(self):
@@ -54,12 +58,3 @@ class HospitalPhysician(models.Model):
             "target": "new",
             "context": {"default_physician_id": self.id},
         }
-
-    # patient_ids_html = fields.Html(
-    #     compute="_compute_patient_ids_html", store=False
-    # )
-    #
-    # @api.depends("patient_ids")
-    # def _compute_patient_ids_html(self):
-    #     for rec in self:
-    #         rec["patient_ids_html"] = "<p>" + rec.patient_ids.name + "<p>"
