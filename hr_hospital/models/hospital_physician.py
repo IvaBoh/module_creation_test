@@ -29,6 +29,12 @@ class HospitalPhysician(models.Model):
         required=False,
         inverse_name="mentor_id",
     )
+    diagnosis_ids = fields.One2many(
+        comodel_name="hospital.diagnosis",
+        string="Diagnoses",
+        required=False,
+        inverse_name="physician_id",
+    )
 
     @api.constrains("mentor_id")
     def _check_mentor_id(self):

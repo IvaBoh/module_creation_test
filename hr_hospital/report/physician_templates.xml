@@ -24,30 +24,59 @@
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="physician">
                 <t t-call="web.basic_layout">
-                    <div class="page p-0 m-0" style="font-size: 22px;">
-                        <div class="header" style="display: flex; flex-direction: column; min-width: 100%;">
-                            <div>
-                                <img style="width: 200px" t-if="res_company.logo" t-att-src="image_data_uri(res_company.logo)" alt="Logo"/>
-                            </div>
-                            <div style="flex: 0 0 50%;">
-                                <t t-raw="res_company.company_details"/>
-                            </div>
-                            <div style="flex: 0 0 50%;">
-                                <p>Name:
-                                    <t t-out="physician.name"/>
-                                </p>
-                                <p>Speciality:
-                                    <t t-out="physician.speciality"/>
-                                </p>
+                    <div class="page">
+                        <div class="wrapper" style="display: flex; flex-direction: column; min-height: 100%;">
+                            <div class="container-fluid">
+                                <div class="row d-flex justify-content-end">
+                                    <div class="col-6 text-right">
+                                        <img style="width: 200px" t-if="res_company.logo" t-att-src="image_data_uri(res_company.logo)" alt="Logo"/>
+                                    </div>
+                                </div>
+                                <div class="row d-flex justify-content-end">
+                                    <div class="col-6 text-right">
+                                        <t t-raw="res_company.company_details"/>
+                                    </div>
+                                </div>
+                                <div class="row d-flex justify-content-end pt-5">
+                                    <div class="col-5 text-right">
+                                        <p>Name:
+                                            <t t-out="physician.name"/>
+                                        </p>
+                                        <p>Speciality:
+                                            <t t-out="physician.speciality"/>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="activity pt-5">
+                                    <p class="h3">Activity of this physician</p>
+                                    <p>Patient number:
+                                        <t t-esc="len(physician.patient_ids)"/>
+                                    </p>
+                                    <p>Diagnosis number:
+                                        <t t-esc="len(physician.diagnosis_ids)"/>
+                                    </p>
+                                    <t t-if="physician.intern">
+                                        <p>This physician is intern</p>
+                                    </t>
+                                    <t t-if="not physician.intern">
+                                        <p>Interns number:
+                                            <t t-esc="len(physician.intern_ids)"/>
+                                        </p>
+                                    </t>
+                                </div>
+                                <div class="patients">
+                                    <p class="h3">Physician patients</p>
+                                </div>
+                                <div class="time pt-5">
+                                    <p>Print at:
+                                        <t t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                                    </p>
+                                    <p>City:
+                                        <t t-out="res_company.city"/>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-
-                        <h2>Report title</h2>
-                        <p>This object's name is
-                            <span t-field="physician.name"/>
-                        </p>
-
-
                     </div>
                 </t>
             </t>

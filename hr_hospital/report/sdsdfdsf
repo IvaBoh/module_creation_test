@@ -1,0 +1,26 @@
+<div class="wrapper" style="display: flex; flex-direction: column; min-height: 100%;">
+                            <div class="header">
+                                <div class="container-fluid">
+                                    <div class="row d-flex justify-content-end">
+                                        <div class="col-6 text-right">
+                                            <img style="width: 200px" t-if="res_company.logo" t-att-src="image_data_uri(res_company.logo)" alt="Logo"/>
+                                        </div>
+                                    </div>
+                                    <div class="row d-flex justify-content-end">
+                                        <div class="col-6 text-right">
+                                            <t t-raw="res_company.company_details"/>
+                                        </div>
+                                    </div>
+                                    <div class="row d-flex justify-content-end pt-5">
+                                        <div class="col-5 text-right">
+                                            <p>Name:
+                                                <t t-out="physician.name"/>
+                                            </p>
+                                            <p>Speciality:
+                                                <t t-out="physician.speciality"/>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
