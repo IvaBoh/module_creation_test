@@ -37,14 +37,6 @@
         "data/hospital_patient_visit_multi_demo.xml",
         "data/hospital_analysis_demo.xml",
     ],
-    # "assets": {
-    #     "web.assets_backend": [
-    #         "hr_hospital/static/src/js/kanban_address.js",
-    #     ],
-    #     "web.assets_qweb": [
-    #         "hr_hospital/static/src/xml/kanban_address.xml",
-    #     ],
-    # },
     "images": ["static/description/icon.png"],
     "support": "antutilo@gmail.com",
     "application": False,
