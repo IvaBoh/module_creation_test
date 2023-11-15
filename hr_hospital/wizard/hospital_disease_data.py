@@ -17,7 +17,7 @@ class HospitalDiseaseData(models.TransientModel):
 
     @api.model
     def create(self, values):
-        record_to_return = None
+        # record_to_return = None
         existing_record = self.env["hospital.disease.data"].search(
             [
                 ("case_date", "=", values.get("case_date")),
